@@ -5,6 +5,9 @@ This is a CMB2 Extension repository which help modify the default behavior of [C
 
 Extension are organized into categories (folders) and each Extension is placed in its own file with a name that describes what it does.
 
+## Usage
+You can view wiki page to usage and setup guide:
+[Documentation](https://github.com/stackadroit/cmb2-extensions/wiki)
 
 ## CMB2 Tabs
 CMB2 Tabs is an extenstion for [CMB2](https://github.com/WebDevStudios/CMB2/) which allow you to oragnize fields into tabs.
