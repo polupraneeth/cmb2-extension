@@ -8,7 +8,9 @@ Extension are organized into categories (folders) and each Extension is placed i
 
 ## CMB2 Tabs
 CMB2 Tabs is an extenstion for [CMB2](https://github.com/WebDevStudios/CMB2/) which allow you to oragnize fields into tabs.
-![cmb2 tabs](https://raw.githubusercontent.com/stackadroit/cmb2-extensions/master/cmb2-tabs/screenshots/metabox-horizontal.png)
+
+![cmb2 tabs](https://github.com/stackadroit/cmb2-extensions/raw/master/cmb2-tabs/screenshots/metabox-horizontal.PNG)
+
 ### Example
 ```php
 // Classic CMB2 declaration
