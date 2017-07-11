@@ -230,11 +230,11 @@ if( !class_exists( 'CMB2_Tabs' ) ) {
         public function panel_wraper_class( $classes, $box ) 
         {
 
-            
+            if ($this->active) {
+                $classes[] = 'cmb-tabs-panel';
+            }
             if ($this->active && $this->fields_output) {
                 $classes[] = 'cmb2-wrap-tabs';
-            }elseif ($this->active) {
-                $classes[] = 'cmb-tabs-panel';
             }
 
             return array_unique( $classes );

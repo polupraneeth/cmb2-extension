@@ -37,7 +37,7 @@
     position: relative;
     box-shadow: none;
 }
-.cmb-tabs .cmb-remove-row-button:hover { 
+/*.cmb-tabs .cmb-remove-row-button:hover { 
     background-color: #ff0000; 
     color: #fff;
 }
@@ -58,7 +58,7 @@
     text-indent: 0;
     top: 0;
     vertical-align: middle;
-}
+}*/
 
 .cmb-tabs .cmb-repeat-row{
     position: relative;
