@@ -240,7 +240,7 @@ if( !class_exists( 'CMB2_Tabs' ) ) {
             return array_unique( $classes );
         }
         
-        public function tabs_render_row_cb( $field_args, $field) 
+        public static function tabs_render_row_cb( $field_args, $field) 
         {
 
             // Ok, callback is good, let's run it and store the result.
