@@ -41,9 +41,9 @@
 
 
 // Exit if accessed directly
-if( !defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
-if( !class_exists( 'CMB2_Tabs' ) ) {
+if (!class_exists('CMB2_Tabs')) {
     /**
      * Class CMB2_Tabs
      */
@@ -98,34 +98,34 @@ if( !class_exists( 'CMB2_Tabs' ) ) {
          */
         public function __construct() {
 
-            add_action( 'cmb2_before_form', array( $this, 'opening_div' ), 10, 4 );
-            add_action( 'cmb2_after_form', array( $this, 'closing_div' ), 20, 4 );
+            add_action('cmb2_before_form', array($this, 'opening_div'), 10, 4);
+            add_action('cmb2_after_form', array($this, 'closing_div'), 20, 4);
 
-            add_action( 'cmb2_before_form', array( $this, 'render_nav' ), 20, 4 );
-            add_action( 'cmb2_after_form', array( $this, 'show_panels' ), 10, 4 );
+            add_action('cmb2_before_form', array($this, 'render_nav'), 20, 4);
+            add_action('cmb2_after_form', array($this, 'show_panels'), 10, 4);
 
-            add_filter( 'cmb2_wrap_classes', array( $this, 'panel_wraper_class' ), 10, 2 );
-            add_filter( 'cmb_output_html_row', array( $this, 'capture_fields' ), 10, 3 );
+            add_filter('cmb2_wrap_classes', array($this, 'panel_wraper_class'), 10, 2);
+            add_filter('cmb_output_html_row', array($this, 'capture_fields'), 10, 3);
         }
 
         /**
          * Display opening div for tabs for meta box
          *
          */
-        public function opening_div( $cmb_id, $object_id, $object_type, $cmb )
+        public function opening_div($cmb_id, $object_id, $object_type, $cmb)
         {
-            if ( !$cmb->prop("tabs") ){
+            if (!$cmb->prop("tabs")) {
                 return;
             }
 
             $tab_style = $cmb->prop("tab_style");
             $class = 'cmb-tabs clearfix';
 
-            if ( isset( $tab_style ) && 'default' != $tab_style ){
-                $class .= ' cmb-tabs-' . $tab_style;
+            if (isset($tab_style) && 'default' != $tab_style) {
+                $class .= ' cmb-tabs-'.$tab_style;
             }
 
-            echo '<div class="' . $class . '">';
+            echo '<div class="'.$class.'">';
 
             // Current cmb2 instance
             $this->cmb = $cmb;
@@ -140,7 +140,7 @@ if( !class_exists( 'CMB2_Tabs' ) ) {
          */
         public function closing_div()
         {
-            if ( ! $this->active ){
+            if (!$this->active) {
                 return;
             }
 
@@ -154,60 +154,60 @@ if( !class_exists( 'CMB2_Tabs' ) ) {
         /**
          * Render Nav
          */
-        public function render_nav( $cmb_id, $object_id, $object_type, $cmb ) 
+        public function render_nav($cmb_id, $object_id, $object_type, $cmb) 
         {
            
             $tabs = $cmb->prop("tabs");
 
-            if($tabs) {
+            if ($tabs) {
 
                 echo '<ul class="cmb-tab-nav">';
                 $active_nav = true;
 
-                foreach ( $tabs as $key => $tab_data )
+                foreach ($tabs as $key => $tab_data)
                 {
 
-                        if ( is_string( $tab_data ) )
+                        if (is_string($tab_data))
                         {
-                            $tab_data = array( 'label' => $tab_data );
+                            $tab_data = array('label' => $tab_data);
                         }
 
-                        $tab_data = wp_parse_args( $tab_data, array(
+                        $tab_data = wp_parse_args($tab_data, array(
                             'icon'  => '',
                             'label' => '',
                             'show_on_cb' => null,
-                        ) );
+                        ));
 
-                        if ($tab_data['show_on_cb'] && $this->do_callback( $tab_data['show_on_cb'] )) {
+                        if ($tab_data['show_on_cb'] && $this->do_callback($tab_data['show_on_cb'])) {
                             $this->conditional[] = $key;
                             continue;
                         }  
 
                         //set icon defult it it's emty 
-                        $tab_data['icon'] = $tab_data['icon'] ? $tab_data['icon'] : "dashicons-admin-post" ;
+                        $tab_data['icon'] = $tab_data['icon'] ? $tab_data['icon'] : "dashicons-admin-post";
                         
                         // If icon is URL to image
-                        if ( filter_var( $tab_data['icon'], FILTER_VALIDATE_URL ) )
+                        if (filter_var($tab_data['icon'], FILTER_VALIDATE_URL))
                         {
-                            $icon = '<img src="' . $tab_data['icon'] . '">';
+                            $icon = '<img src="'.$tab_data['icon'].'">';
                         }
                         // If icon is icon font
                         else
                         {
                             // If icon is dashicon, auto add class 'dashicons' for users
-                            if ( false !== strpos( $tab_data['icon'], 'dashicons' ) )
+                            if (false !== strpos($tab_data['icon'], 'dashicons'))
                             {
                                 $tab_data['icon'] .= ' dashicons';
                             }
                             // Remove duplicate classes
-                            $tab_data['icon'] = array_filter( array_map( 'trim', explode( ' ', $tab_data['icon'] ) ) );
-                            $tab_data['icon'] = implode( ' ', array_unique( $tab_data['icon'] ) );
+                            $tab_data['icon'] = array_filter(array_map('trim', explode(' ', $tab_data['icon'])));
+                            $tab_data['icon'] = implode(' ', array_unique($tab_data['icon']));
 
-                            $icon = $tab_data['icon'] ? '<i class="' . $tab_data['icon'] . '"></i>' : '';
+                            $icon = $tab_data['icon'] ? '<i class="'.$tab_data['icon'].'"></i>' : '';
                         }
 
                         $class = "cmb-tab-$key";
-                        if ($active_nav){
+                        if ($active_nav) {
                             $class .= ' cmb-tab-active';
                             $this->active_panel = $key;
                             $active_nav = false;
@@ -227,7 +227,7 @@ if( !class_exists( 'CMB2_Tabs' ) ) {
             }
         }
 
-        public function panel_wraper_class( $classes, $box ) 
+        public function panel_wraper_class($classes, $box) 
         {
 
             if ($this->active) {
@@ -237,61 +237,61 @@ if( !class_exists( 'CMB2_Tabs' ) ) {
                 $classes[] = 'cmb2-wrap-tabs';
             }
 
-            return array_unique( $classes );
+            return array_unique($classes);
         }
         
-        public static function tabs_render_row_cb( $field_args, $field) 
+        public static function tabs_render_row_cb($field_args, $field) 
         {
 
             // Ok, callback is good, let's run it and store the result.
             ob_start();
                 
                 // If field is requesting to not be shown on the front-end
-                if ( ! is_admin() && ! $this->args( 'on_front' ) ) {
+                if (!is_admin() && !$this->args('on_front')) {
                     return;
                 }
 
                 // If field is requesting to be conditionally shown
-                if ( ! $field->should_show() ) {
+                if (!$field->should_show()) {
                     return;
                 }
 
-                $field->peform_param_callback( 'before_row' );
+                $field->peform_param_callback('before_row');
 
-                printf( "<div class=\"cmb-row %s\" data-fieldtype=\"%s\">\n", $field->row_classes(), $field->type() );
+                printf("<div class=\"cmb-row %s\" data-fieldtype=\"%s\">\n", $field->row_classes(), $field->type());
 
-                if ( ! $field->args( 'show_names' ) ) {
+                if (!$field->args('show_names')) {
                     echo "\n\t<div class=\"cmb-td\">\n";
 
-                    $field->peform_param_callback( 'label_cb' );
+                    $field->peform_param_callback('label_cb');
 
                 } else {
 
-                    if ( $field->get_param_callback_result( 'label_cb' ) ) {
-                        echo '<div class="cmb-th">', $field->peform_param_callback( 'label_cb' ), '</div>';
+                    if ($field->get_param_callback_result('label_cb')) {
+                        echo '<div class="cmb-th">', $field->peform_param_callback('label_cb'), '</div>';
                     }
 
                     echo "\n\t<div class=\"cmb-td\">\n";
                 }
 
-                $field->peform_param_callback( 'before' );
+                $field->peform_param_callback('before');
 
-                $types = new CMB2_Types( $field );
+                $types = new CMB2_Types($field);
                 $types->render();
 
-                $field->peform_param_callback( 'after' );
+                $field->peform_param_callback('after');
 
                 echo "\n\t</div>\n</div>";
 
-                $field->peform_param_callback( 'after_row' );
+                $field->peform_param_callback('after_row');
 
 
             // Grab the result from the output buffer and store it.
             $echoed = ob_get_clean();
 
-            $outer_html =  $echoed ? $echoed : $returned;
+            $outer_html = $echoed ? $echoed : $returned;
 
-            $outer_html = apply_filters( 'cmb_output_html_row', $outer_html, $field_args, $field);            
+            $outer_html = apply_filters('cmb_output_html_row', $outer_html, $field_args, $field);            
 
             echo $outer_html;
         }
@@ -301,18 +301,18 @@ if( !class_exists( 'CMB2_Tabs' ) ) {
          * Note that: this public function is hooked to 'cmb2_after_form', when all fields are outputted
          * (and captured by 'capture_fields' public function)
          */
-        public function show_panels($cmb_id, $object_id, $object_type, $cmb )
+        public function show_panels($cmb_id, $object_id, $object_type, $cmb)
         {
-            if ( ! $this->active ){return;}
+            if (!$this->active) {return; }
 
-            echo '<div class="', esc_attr( $cmb->box_classes() ), '"><div id="cmb2-metabox-', sanitize_html_class( $cmb_id ), '" class="cmb2-metabox cmb-field-list">';
+            echo '<div class="', esc_attr($cmb->box_classes()), '"><div id="cmb2-metabox-', sanitize_html_class($cmb_id), '" class="cmb2-metabox cmb-field-list">';
 
-                foreach ( $this->fields_output as $tab => $fields )
+                foreach ($this->fields_output as $tab => $fields)
                 {   
                     if (!in_array($tab, $this->conditional, TRUE)) {
                             $active_panel = $this->active_panel == $tab ? "show" : "";
-                            echo '<div class="' . $active_panel . ' cmb-tab-panel cmb-tab-panel-' . $tab . '">';
-                            echo implode( '', $fields );
+                            echo '<div class="'.$active_panel.' cmb-tab-panel cmb-tab-panel-'.$tab.'">';
+                            echo implode('', $fields);
                             echo '</div>';
                     }
                 }
@@ -324,14 +324,14 @@ if( !class_exists( 'CMB2_Tabs' ) ) {
         /**
          * Save field output into class variable to output later
          */
-        public function capture_fields( $output, $field_args, $field )
+        public function capture_fields($output, $field_args, $field)
         {
             // If meta box doesn't have tabs, do nothing
-            if ( ! $this->active || ! isset( $field_args['tab'] ) ){ return $output; }
+            if (!$this->active || !isset($field_args['tab'])) { return $output; }
 
             $tab = $field_args['tab'];
 
-            if ( ! isset( $this->fields_output[$tab] ) ){
+            if (!isset($this->fields_output[$tab])) {
                 $this->fields_output[$tab] = array();
             }
             $this->fields_output[$tab][] = $output;
@@ -346,11 +346,11 @@ if( !class_exists( 'CMB2_Tabs' ) ) {
          */
         public function setup_admin_scripts() {
             
-            wp_register_script( 'cmb-tabs-js', self::url( 'js/tabs.js'), array( 'jquery' ), self::VERSION );
-            wp_enqueue_script( 'cmb-tabs-js' );
+            wp_register_script('cmb-tabs-js', self::url('js/tabs.js'), array('jquery'), self::VERSION);
+            wp_enqueue_script('cmb-tabs-js');
 
-            wp_enqueue_style( 'cmb2-tabs-style', self::url( 'css/tabs.css'), array(), self::VERSION );
-            wp_enqueue_style( 'cmb2-tabs-style' );
+            wp_enqueue_style('cmb2-tabs-style', self::url('css/tabs.css'), array(), self::VERSION);
+            wp_enqueue_style('cmb2-tabs-style');
 
         }
 
@@ -358,32 +358,32 @@ if( !class_exists( 'CMB2_Tabs' ) ) {
          * Defines the url which is used to load local resources. Based on, and uses, 
          * the CMB2_Utils class from the CMB2 library.
          */
-        public static function url( $path = '' ) {
-            if ( self::$url ) { return self::$url . $path; }
+        public static function url($path = '') {
+            if (self::$url) { return self::$url.$path; }
 
             /**
              * Set the variable cmb2_tabs_dir
              */
-            $cmb2_tabs_dir = trailingslashit( dirname( __FILE__ ) );
+            $cmb2_tabs_dir = trailingslashit(dirname(__FILE__));
 
             /**
              * Use CMB2_Utils to gather the url from cmb2_tabs_dir
              */ 
-            $cmb2_tabs_url = CMB2_Utils::get_url_from_dir( $cmb2_tabs_dir );
+            $cmb2_tabs_url = CMB2_Utils::get_url_from_dir($cmb2_tabs_dir);
 
             /**
              * Filter the CMB2 FPSA location url
              */
-            self::$url = trailingslashit( apply_filters( 'cmb2_tabs_url', $cmb2_tabs_url, self::VERSION ) );
+            self::$url = trailingslashit(apply_filters('cmb2_tabs_url', $cmb2_tabs_url, self::VERSION));
 
-            return self::$url . $path;
+            return self::$url.$path;
         }
 
         /**
          * Handles metabox property callbacks, and passes this $cmb object as property.
          */
-        protected function do_callback( $cb ) {
-            return call_user_func( $cb, $this->cmb, $this );
+        protected function do_callback($cb) {
+            return call_user_func($cb, $this->cmb, $this);
         }
 
 
