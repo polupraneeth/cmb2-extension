@@ -13,7 +13,7 @@
  * @wordpress-plugin
  * Plugin Name:       CMB2 Tabs
  * Plugin URI:        https://github.com/polupraneeth/cmb2-extensions
- * Description:       Plugin to establish conditional relationships between fields in a CMB2 metabox.
+ * Description:       CMB2 Tabs is an extenstion for CMB2 which allow you to oragnize fields into tabs.
  * Author:            Praneeth Polu <contact@polupraneeth.me>
  * Author URI:        https://github.com/polupraneeth
  * Github Plugin URI: https://github.com/polupraneeth/cmb2-extensions
