@@ -21,7 +21,7 @@
  * Version:           1.0.0
  * License:           GPL v3
  *
- * Copyright (C) 2017, Praneeth Polu - contact@polupraneeth@gmail.com
+ * Copyright (C) 2017, Praneeth Polu - contact@polupraneeth.me
  *
  * GNU General Public License, Free Software Foundation <http://creativecommons.org/licenses/GPL/3.0/>
  *
