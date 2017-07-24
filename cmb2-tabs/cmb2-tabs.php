@@ -4,7 +4,7 @@
  *
  * @package     WordPress\Plugins\CMB2 Tabs
  * @author      Praneeth Polu <contact@polupraneeth.me>
- * @link        https://github.com/polupraneeth/cmb2-extensions
+ * @link        https://github.com/stackadroit/cmb2-extensions
  * @version     1.0.0
  *
  * @copyright   2017 Praneeth Polu
@@ -12,11 +12,11 @@
  *
  * @wordpress-plugin
  * Plugin Name:       CMB2 Tabs
- * Plugin URI:        https://github.com/polupraneeth/cmb2-extensions
+ * Plugin URI:        https://github.com/stackadroit/cmb2-extensions
  * Description:       CMB2 Tabs is an extenstion for CMB2 which allow you to oragnize fields into tabs.
  * Author:            Praneeth Polu <contact@polupraneeth.me>
  * Author URI:        https://github.com/polupraneeth
- * Github Plugin URI: https://github.com/polupraneeth/cmb2-extensions
+ * Github Plugin URI: https://github.com/stackadroit/cmb2-extensions
  * Github Branch:     master
  * Version:           1.0.0
  * License:           GPL v3
