@@ -1,0 +1,35 @@
+{
+    "name": "stackadroit/cmb2-extensions",
+    "description": "This is a CMB2 Extension repository which help modify the default behavior of CMB2 and extends it's functionality.",
+    "license": "GPL-3.0+",
+    "authors": [
+        {
+            "name": "Praneeth Polu",
+            "email": "contact@polupraneeth.me",
+            "homepage": "https://github.com/polupraneeth/",
+            "role": "Developer"
+        },
+        {
+            "name": "Team StackThemes",
+            "email": "stackthemes@stackadroit.com",
+            "homepage": "https://github.com/stackadroit",
+            "role": "Developer"
+        }
+    ],
+    "keywords": ["wordpress", "plugin", "metabox" "cmb2"],
+    "homepage": "https://github.com/stackadroit/cmb2-extensions",
+    "type": "wordpress-plugin",
+    "support": {
+        "issues": "https://github.com/stackadroit/cmb2-extensions/issues",
+        "source": "https://github.com/stackadroit/cmb2-extensions"
+    },
+    "require": {
+        "php": ">5.2.4"
+    },
+    "suggest": {
+        "composer/installers": "~1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    }
+}

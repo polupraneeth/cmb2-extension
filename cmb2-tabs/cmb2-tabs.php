@@ -3,25 +3,25 @@
  * CMB2 Tabs.
  *
  * @package     WordPress\Plugins\CMB2 Tabs
- * @author      Praneeth Polu <contact@polupraneeth.me>
- * @link        https://github.com/stackadroit/cmb2-extensions
- * @version     1.0.0
+ * @author      Team StackThemes <stackthemes@stackadroit.com>
+ * @link        https://stackadroit.com
+ * @version     1.0.4
  *
- * @copyright   2017 Praneeth Polu
+ * @copyright   2017 Team StackThemes
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 3 or higher
  *
  * @wordpress-plugin
  * Plugin Name:       CMB2 Tabs
  * Plugin URI:        https://github.com/stackadroit/cmb2-extensions
  * Description:       CMB2 Tabs is an extenstion for CMB2 which allow you to oragnize fields into tabs.
- * Author:            Praneeth Polu <contact@polupraneeth.me>
- * Author URI:        https://github.com/polupraneeth
+ * Author:            Team StackThemes <stackthemes@stackadroit.com>
+ * Author URI:        https://stackadroit.com
  * Github Plugin URI: https://github.com/stackadroit/cmb2-extensions
  * Github Branch:     master
- * Version:           1.0.0
+ * Version:           1.0.4
  * License:           GPL v3
  *
- * Copyright (C) 2017, Praneeth Polu - contact@polupraneeth.me
+ * Copyright (C) 2017, Team StackThemes - stackthemes@stackadroit.com
  *
  * GNU General Public License, Free Software Foundation <http://creativecommons.org/licenses/GPL/3.0/>
  *
@@ -43,9 +43,18 @@
 // Exit if accessed directly
 if (!defined('ABSPATH')) exit;
 
-if (!class_exists('CMB2_Tabs')) {
+if ( ! class_exists( 'CMB2_Tabs', false ) ) {
+    
     /**
      * Class CMB2_Tabs
+     * 
+     * @since  1.0.0
+     *
+     * @category  WordPress_Plugin
+     * @package   CMB2 Tabs
+     * @author    Team StackThemes
+     * @license   GPL-3.0+
+     * @link      https://stackadroit.com
      */
     class CMB2_Tabs {
 
@@ -53,51 +62,76 @@ if (!class_exists('CMB2_Tabs')) {
          * Priority on which our actions are hooked in.
          *
          * @const int
+         * @since 1.0.0
          */
-        const PRIORITY = 99999;
+        const PRIORITY = 99998;
 
         /**
          * Current version number
+         *
+         * @const string
+         * @since 1.0.0
          */
-        const VERSION = '1.0.0';
+        const VERSION = '1.0.4';
 
         /**
          * The url which is used to load local resources
+         * 
+         * @var string
+         * @since 1.0.0
          */
         protected static $url = '';
         
         /**
          * Current CMB2 instance
+         *
+         * @var CMB2
+         * @since 1.0.0
          */
         protected $cmb = '';
 
         /**
          * Indicate that the instance of the class is working on a meta box that has tabs or not
          * It will be set 'true' BEFORE meta box is display and 'false' AFTER
+         *
+         * @var boolean
+         * @since 1.0.0
          */
         public $active = false;
 
         /**
          * Active Panel
+         *
+         * @var string
+         * @since 1.0.0
          */
         public $active_panel = '';
 
         /**
          * Deactive Conditional tabs "show_on_cb"
+         *
+         * @var array
+         * @since 1.0.0
          */
         public $conditional = array();
 
         /**
          * Store all output of fields
          * This is used to put fields in correct <div> for tabs
+         *
+         * @var array
+         * @since 1.0.0
          */
         public $fields_output = array();
 
         /**
          * Initialize the hooking into CMB2
+         *
+         * @since 1.0.0
          */
         public function __construct() {
 
+            // Hook all the functions
             add_action('cmb2_before_form', array($this, 'opening_div'), 10, 4);
             add_action('cmb2_after_form', array($this, 'closing_div'), 20, 4);
 
@@ -111,6 +145,7 @@ if (!class_exists('CMB2_Tabs')) {
         /**
          * Display opening div for tabs for meta box
          *
+         * @since 1.0.0
          */
         public function opening_div($cmb_id, $object_id, $object_type, $cmb)
         {
@@ -137,6 +172,8 @@ if (!class_exists('CMB2_Tabs')) {
 
         /**
          * Display closing div for tabs for meta box
+         *
+         * @since 1.0.0
          */
         public function closing_div()
         {
@@ -152,7 +189,9 @@ if (!class_exists('CMB2_Tabs')) {
         }
 
         /**
-         * Render Nav
+         * Render Navigration
+         *
+         * @since 1.0.0
          */
         public function render_nav($cmb_id, $object_id, $object_type, $cmb) 
         {
@@ -227,6 +266,11 @@ if (!class_exists('CMB2_Tabs')) {
             }
         }
 
+        /**
+         * Add class to wraper div of CMB2 panel
+         *
+         * @since 1.0.0
+         */
         public function panel_wraper_class($classes, $box) 
         {
 
@@ -240,6 +284,11 @@ if (!class_exists('CMB2_Tabs')) {
             return array_unique($classes);
         }
         
+        /**
+         * Modified CMB2 render row function to capture rows in a output string
+         *
+         * @since 1.0.0
+         */
         public static function tabs_render_row_cb($field_args, $field) 
         {
 
@@ -300,6 +349,8 @@ if (!class_exists('CMB2_Tabs')) {
          * Display tab navigation for meta box
          * Note that: this public function is hooked to 'cmb2_after_form', when all fields are outputted
          * (and captured by 'capture_fields' public function)
+         *
+         * @since 1.0.0
          */
         public function show_panels($cmb_id, $object_id, $object_type, $cmb)
         {
@@ -323,6 +374,8 @@ if (!class_exists('CMB2_Tabs')) {
 
         /**
          * Save field output into class variable to output later
+         *
+         * @since 1.0.0
          */
         public function capture_fields($output, $field_args, $field)
         {
@@ -343,6 +396,8 @@ if (!class_exists('CMB2_Tabs')) {
     
         /**
          * Enqueue scripts and styles
+         *
+         * @since 1.0.0
          */
         public function setup_admin_scripts() {
             
@@ -357,6 +412,8 @@ if (!class_exists('CMB2_Tabs')) {
         /**
          * Defines the url which is used to load local resources. Based on, and uses, 
          * the CMB2_Utils class from the CMB2 library.
+         *
+         * @since 1.0.0
          */
         public static function url($path = '') {
             if (self::$url) { return self::$url.$path; }
@@ -381,6 +438,8 @@ if (!class_exists('CMB2_Tabs')) {
 
         /**
          * Handles metabox property callbacks, and passes this $cmb object as property.
+         *
+         * @since 1.0.0
          */
         protected function do_callback($cb) {
             return call_user_func($cb, $this->cmb, $this);
@@ -389,5 +448,6 @@ if (!class_exists('CMB2_Tabs')) {
 
     }
 
+    //Boot the hole thing
     $cmb2_tabs = new CMB2_Tabs();
 }

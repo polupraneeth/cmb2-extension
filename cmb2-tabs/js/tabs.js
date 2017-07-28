@@ -1,4 +1,4 @@
-/* global jQuery, google */
+/* global jQuery */
 
 jQuery( function ( $ )
 {
