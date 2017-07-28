@@ -16,7 +16,7 @@
             "role": "Developer"
         }
     ],
-    "keywords": ["wordpress", "plugin", "metabox" "cmb2"],
+    "keywords": ["wordpress", "plugin", "metabox", "cmb2"],
     "homepage": "https://github.com/stackadroit/cmb2-extensions",
     "type": "wordpress-plugin",
     "support": {
