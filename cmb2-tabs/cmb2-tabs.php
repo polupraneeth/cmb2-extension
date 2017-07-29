@@ -41,9 +41,11 @@
 
 
 // Exit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
-if ( ! class_exists( 'CMB2_Tabs', false ) ) {
+if (!class_exists('CMB2_Tabs', false)) {
     
     /**
      * Class CMB2_Tabs
