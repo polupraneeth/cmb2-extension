@@ -3,25 +3,25 @@
  * CMB2 Tabs.
  *
  * @package     WordPress\Plugins\CMB2 Tabs
- * @author      Team StackThemes <stackthemes@stackadroit.com>
- * @link        https://stackadroit.com
+ * @author      Team StackStudio <stackstudio@stackadroit.com>
+ * @link        https://stackstudio.stackadroit.com
  * @version     1.0.4
  *
- * @copyright   2017 Team StackThemes
+ * @copyright   2017 Team StackStudio
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 3 or higher
  *
  * @wordpress-plugin
  * Plugin Name:       CMB2 Tabs
  * Plugin URI:        https://github.com/stackadroit/cmb2-extensions
  * Description:       CMB2 Tabs is an extenstion for CMB2 which allow you to oragnize fields into tabs.
- * Author:            Team StackThemes <stackthemes@stackadroit.com>
- * Author URI:        https://stackadroit.com
+ * Author:            Team StackStudio <stackstudio@stackadroit.com>
+ * Author URI:        https://stackstudio.stackadroit.com
  * Github Plugin URI: https://github.com/stackadroit/cmb2-extensions
  * Github Branch:     master
  * Version:           1.0.4
  * License:           GPL v3
  *
- * Copyright (C) 2017, Team StackThemes - stackthemes@stackadroit.com
+ * Copyright (C) 2017, Team StackStudio - stackstudio@stackadroit.com
  *
  * GNU General Public License, Free Software Foundation <http://creativecommons.org/licenses/GPL/3.0/>
  *
@@ -54,7 +54,7 @@ if (!class_exists('CMB2_Tabs', false)) {
      *
      * @category  WordPress_Plugin
      * @package   CMB2 Tabs
-     * @author    Team StackThemes
+     * @author    Team StackStudio
      * @license   GPL-3.0+
      * @link      https://stackadroit.com
      */
