@@ -35,6 +35,7 @@ function cmb2_tabs_show_if_front_page($cmb) {
     return true;
 }
 
+
 add_action('cmb2_admin_init', 'cmb2_tabs_register_demo_metabox');
 
 /**
@@ -201,6 +202,31 @@ function cmb2_tabs_register_demo_metabox() {
         'tab'  => 'note',
         'render_row_cb' => array('CMB2_Tabs', 'tabs_render_row_cb'),
     ));
+    
+    /*******************GROUPS**************************/
+    $group_field_id = $cmb_tabs_demo->add_field( array(
+        'id'          => 'wiki_test_repeat_group',
+        'type'        => 'group',
+        'description' => __( 'Generates reusable form entries', 'cmb2_tabs' ),
+        'tab'  => 'note',
+        'render_row_cb' => array('CMB2_Tabs', 'tabs_render_group_row_cb'),
+        // 'repeatable'  => false, // use false if you want non-repeatable group
+        'options'     => array(
+            'group_title'   => __( 'Entry {#}', 'cmb2_tabs' ), // since version 1.1.4, {#} gets replaced by row number
+            'add_button'    => __( 'Add Another Entry', 'cmb2_tabs' ),
+            'remove_button' => __( 'Remove Entry', 'cmb2_tabs' ),
+            'sortable'      => true, // beta
+            // 'closed'     => true, // true to have the groups closed by default
+        ),
+    ) );
+
+    // Id's for group's fields only need to be unique for the group. Prefix is not needed.
+    $cmb_tabs_demo->add_group_field( $group_field_id, array(
+        'name' => __( 'Entry Title', 'cmb2_tabs' ),
+        'id'   => 'title',
+        'type' => 'text',
+        // 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+    ) );
     
 }
 

@@ -3,25 +3,25 @@
  * CMB2 Tabs.
  *
  * @package     WordPress\Plugins\CMB2 Tabs
- * @author      Team StackStudio <stackstudio@stackadroit.com>
- * @link        https://stackstudio.stackadroit.com
- * @version     1.0.4
+ * @author      Team StackAdroit <stackstudio@stackadroit.com>
+ * @link        https://stackadroit.com
+ * @version     1.0.5
  *
- * @copyright   2017 Team StackStudio
+ * @copyright   2017 Team StackAdroit
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 3 or higher
  *
  * @wordpress-plugin
  * Plugin Name:       CMB2 Tabs
  * Plugin URI:        https://github.com/stackadroit/cmb2-extensions
  * Description:       CMB2 Tabs is an extenstion for CMB2 which allow you to oragnize fields into tabs.
- * Author:            Team StackStudio <stackstudio@stackadroit.com>
- * Author URI:        https://stackstudio.stackadroit.com
+ * Author:            Team StackAdroit <stackstudio@stackadroit.com>
+ * Author URI:        https://stackadroit.com
  * Github Plugin URI: https://github.com/stackadroit/cmb2-extensions
  * Github Branch:     master
- * Version:           1.0.4
+ * Version:           1.0.5
  * License:           GPL v3
  *
- * Copyright (C) 2017, Team StackStudio - stackstudio@stackadroit.com
+ * Copyright (C) 2017, Team StackAdroit - stackstudio@stackadroit.com
  *
  * GNU General Public License, Free Software Foundation <http://creativecommons.org/licenses/GPL/3.0/>
  *
@@ -54,7 +54,7 @@ if (!class_exists('CMB2_Tabs', false)) {
      *
      * @category  WordPress_Plugin
      * @package   CMB2 Tabs
-     * @author    Team StackStudio
+     * @author    Team StackAdroit
      * @license   GPL-3.0+
      * @link      https://stackadroit.com
      */
@@ -66,7 +66,7 @@ if (!class_exists('CMB2_Tabs', false)) {
          * @const int
          * @since 1.0.0
          */
-        const PRIORITY = 99998;
+        const PRIORITY = 99997;
 
         /**
          * Current version number
@@ -74,7 +74,7 @@ if (!class_exists('CMB2_Tabs', false)) {
          * @const string
          * @since 1.0.0
          */
-        const VERSION = '1.0.4';
+        const VERSION = '1.0.5';
 
         /**
          * The url which is used to load local resources
@@ -90,7 +90,7 @@ if (!class_exists('CMB2_Tabs', false)) {
          * @var CMB2
          * @since 1.0.0
          */
-        protected $cmb = '';
+        protected static $cmb = '';
 
         /**
          * Indicate that the instance of the class is working on a meta box that has tabs or not
@@ -165,7 +165,11 @@ if (!class_exists('CMB2_Tabs', false)) {
             echo '<div class="'.$class.'">';
 
             // Current cmb2 instance
-            $this->cmb = $cmb;
+            CMB2_Tabs::$cmb = $cmb;
+
+            // Add cmb2_tabs custome render callback to instance
+            CMB2_Field::$callable_fields[] = 'cmb2_tabs_render_row_cb';
+
             // Set 'true' to let us know that we're working on a meta box that has tabs
             $this->active = true;
             //setup style and script for tabs
@@ -293,59 +297,52 @@ if (!class_exists('CMB2_Tabs', false)) {
          */
         public static function tabs_render_row_cb($field_args, $field) 
         {
+            
+            // Ok, callback is good, let's run it and store the result.
+            ob_start();
+                
+            if ($field->args( 'cmb2_tabs_render_row_cb' )) {
+                CMB2_Tabs::$cmb->peform_param_callback( 'cmb2_tabs_render_row_cb' );
+            } else {
+                $field->render_field_callback();
+            }
+
+            // Grab the result from the output buffer and store it.
+            $echoed = ob_get_clean();
+            $outer_html = $echoed ? $echoed : $returned;
+            $outer_html = apply_filters('cmb_output_html_row', $outer_html, $field_args, $field);            
+            echo $outer_html;
+            //return $field;
+        }
+
+
+        /**
+         * Modified CMB2 render row function to capture Group rows in a output string
+         *
+         * @since 1.0.0
+         */
+        public static function tabs_render_group_row_cb($field_args, $field_group) 
+        {
 
             // Ok, callback is good, let's run it and store the result.
             ob_start();
                 
-                // If field is requesting to not be shown on the front-end
-                if (!is_admin() && !$this->args('on_front')) {
-                    return;
-                }
-
-                // If field is requesting to be conditionally shown
-                if (!$field->should_show()) {
-                    return;
-                }
-
-                $field->peform_param_callback('before_row');
-
-                printf("<div class=\"cmb-row %s\" data-fieldtype=\"%s\">\n", $field->row_classes(), $field->type());
-
-                if (!$field->args('show_names')) {
-                    echo "\n\t<div class=\"cmb-td\">\n";
-
-                    $field->peform_param_callback('label_cb');
-
-                } else {
-
-                    if ($field->get_param_callback_result('label_cb')) {
-                        echo '<div class="cmb-th">', $field->peform_param_callback('label_cb'), '</div>';
-                    }
-
-                    echo "\n\t<div class=\"cmb-td\">\n";
-                }
-
-                $field->peform_param_callback('before');
-
-                $types = new CMB2_Types($field);
-                $types->render();
-
-                $field->peform_param_callback('after');
-
-                echo "\n\t</div>\n</div>";
-
-                $field->peform_param_callback('after_row');
-
+            if ($field_group->args( 'cmb2_tabs_render_row_cb' )) {
+                CMB2_Tabs::$cmb->render_group_callback( 'cmb2_tabs_render_row_cb' );
+            } else {
+                CMB2_Tabs::$cmb->render_group_callback($field_args, $field_group);
+            } 
 
             // Grab the result from the output buffer and store it.
             $echoed = ob_get_clean();
-
             $outer_html = $echoed ? $echoed : $returned;
-
-            $outer_html = apply_filters('cmb_output_html_row', $outer_html, $field_args, $field);            
+            $outer_html = apply_filters('cmb_output_html_row', $outer_html, $field_args, $field_group);            
 
             echo $outer_html;
+
+            //return $field_group;
         }
+
 
         /**
          * Display tab navigation for meta box
