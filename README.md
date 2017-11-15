@@ -14,10 +14,6 @@ CMB2 Tabs is an extenstion for [CMB2](https://github.com/WebDevStudios/CMB2/) wh
 
 ![cmb2 tabs](https://github.com/stackadroit/cmb2-extensions/raw/master/cmb2-tabs/screenshots/metabox-horizontal.PNG)
 
-### Known Issues
-
-* Tabs doesn’t work in group field.
-
 ### Example
 ```php
 // Classic CMB2 declaration
