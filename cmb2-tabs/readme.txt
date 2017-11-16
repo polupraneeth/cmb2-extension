@@ -1,10 +1,10 @@
-﻿=== CMB2 Tabs ===
+=== CMB2 Tabs ===
 Contributors:      stackadroid, polupraneeth
 Donate link:       http://stackadroit.com/
 Tags:              metaboxes, fields, tabs
 Requires at least: 3.8.0
 Tested up to:      4.7.2
-Stable tag:        1.0.5
+Stable tag:        1.0.4
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,10 @@ Development occurs on Github, and all contributions welcome. [CONTRIBUT](https:/
 == Frequently Asked Questions ==
 
 FAQ's usually end up in the [github wiki](https://github.com/stackadroit/cmb2-extensions/wiki).
+
+### Known Issues
+
+* Tabs doesn’t work in group field.
 
 == Changelog ==
 
