@@ -5,7 +5,7 @@
  * @package     WordPress\Plugins\CMB2 Tabs
  * @author      Team StackAdroit <stackstudio@stackadroit.com>
  * @link        https://stackadroit.com
- * @version     1.0.5
+ * @version     1.0.6
  *
  * @copyright   2017 Team StackAdroit
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 3 or higher
@@ -13,12 +13,12 @@
  * @wordpress-plugin
  * Plugin Name:       CMB2 Tabs
  * Plugin URI:        https://github.com/stackadroit/cmb2-extensions
- * Description:       CMB2 Tabs is an extenstion for CMB2 which allow you to oragnize fields into tabs.
+ * Description:       CMB2 Tabs is an extension for CMB2 which allow you to organize fields into tabs.
  * Author:            Team StackAdroit <stackstudio@stackadroit.com>
  * Author URI:        https://stackadroit.com
  * Github Plugin URI: https://github.com/stackadroit/cmb2-extensions
  * Github Branch:     master
- * Version:           1.0.5
+ * Version:           1.0.6
  * License:           GPL v3
  *
  * Copyright (C) 2017, Team StackAdroit - stackstudio@stackadroit.com
@@ -66,7 +66,7 @@ if (!class_exists('CMB2_Tabs', false)) {
          * @const int
          * @since 1.0.0
          */
-        const PRIORITY = 99997;
+        const PRIORITY = 99996;
 
         /**
          * Current version number
@@ -74,7 +74,7 @@ if (!class_exists('CMB2_Tabs', false)) {
          * @const string
          * @since 1.0.0
          */
-        const VERSION = '1.0.5';
+        const VERSION = '1.0.6';
 
         /**
          * The url which is used to load local resources
@@ -300,12 +300,17 @@ if (!class_exists('CMB2_Tabs', false)) {
             
             // Ok, callback is good, let's run it and store the result.
             ob_start();
-                
-            if ($field->args( 'cmb2_tabs_render_row_cb' )) {
-                CMB2_Tabs::$cmb->peform_param_callback( 'cmb2_tabs_render_row_cb' );
-            } else {
-                $field->render_field_callback();
+            
+            if ( 'group' === $field_args['type'] ) {
+            	self::tabs_render_group_row_cb($field_args, $field);
+            }else{
+            	if ($field->args( 'cmb2_tabs_render_row_cb' )) {
+	                CMB2_Tabs::$cmb->peform_param_callback( 'cmb2_tabs_render_row_cb' );
+	            } else {
+	                $field->render_field_callback();
+	            }
             }
+            
 
             // Grab the result from the output buffer and store it.
             $echoed = ob_get_clean();
@@ -319,7 +324,7 @@ if (!class_exists('CMB2_Tabs', false)) {
         /**
          * Modified CMB2 render row function to capture Group rows in a output string
          *
-         * @since 1.0.0
+         * @since 1.0.5
          */
         public static function tabs_render_group_row_cb($field_args, $field_group) 
         {

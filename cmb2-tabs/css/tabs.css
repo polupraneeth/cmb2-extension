@@ -155,6 +155,7 @@ Helper
   }
   .cmb-tabs ul.cmb-tab-nav li a {
       color: #555;
+      border: 1px solid transparent;
   }
   
   .cmb-tabs ul.cmb-tab-nav li.cmb-tab-active a {

@@ -4,9 +4,9 @@ Donate link:       http://stackadroit.com/
 Tags:              metaboxes, fields, tabs
 Requires at least: 3.8.0
 Tested up to:      4.7.2
-Stable tag:        1.0.4
-License:           GPLv2 or later
-License URI:       http://www.gnu.org/licenses/gpl-2.0.html
+Stable tag:        1.0.6
+License:           GPLv3
+License URI:       http://creativecommons.org/licenses/GPL/3.0/
 
 
 CMB2 Tabs is an extenstion for CMB2 which allow you to oragnize fields into tabs.
@@ -44,11 +44,10 @@ Development occurs on Github, and all contributions welcome. [CONTRIBUT](https:/
 
 FAQ's usually end up in the [github wiki](https://github.com/stackadroit/cmb2-extensions/wiki).
 
-### Known Issues
-
-* Tabs doesn’t work in group field.
-
 == Changelog ==
 
 = 1.0.2 beta 26.07.2017 =
 * Error fix on plugin activation.
+
+= 1.0.6 beta 17.11.2017 =
+* Fixed group field issues
