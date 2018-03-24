@@ -81,7 +81,6 @@ function cmb2_tabs_register_demo_metabox() {
         'type'       => 'text',
         'tab'  => 'contact',
         'render_row_cb' => array('CMB2_Tabs', 'tabs_render_row_cb'),
-        'show_on_cb' => 'cmb2_tabs_hide_if_no_cats', // function should return a bool value
         // 'on_front'        => false, // Optionally designate a field to wp-admin only
         // 'repeatable'      => true,
         // 'column'          => true, // Display field value in the admin post-listing columns
