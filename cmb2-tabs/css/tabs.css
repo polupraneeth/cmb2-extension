@@ -204,6 +204,15 @@ Helper
   .cmb2-wrap-tabs .cmb-tab-panel.show{
       display: block;
   }
+  #poststuff .cmb-tabs .cmb-type-group .cmb-row .cmb-group-title,
+  #poststuff .cmb-tabs .cmb2-postbox .cmb-row .cmb-group-title{
+      margin-left: inherit;
+      margin-right: inherit;
+  }
+  .cmb-tabs .cmb-type-group .cmb-row .cmbhandle,
+  .cmb-tabs .cmb2-postbox .cmb-row .cmbhandle{
+      right: inherit;
+  }
   
   /*--------------------------------------------------------------
   Classic Tab
