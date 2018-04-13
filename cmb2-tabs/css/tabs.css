@@ -118,11 +118,6 @@ Helper
       padding: 0;
       position: relative;
   }
-  .cmb-tabs i, 
-  .cmb-tabs i:before {
-      font-size: 16px;
-      vertical-align: middle;
-  }
   .cmb-tabs ul.cmb-tab-nav li a {
       border-right: 1px solid #eee;
       border-left: 2px solid #fafafa;
@@ -148,6 +143,11 @@ Helper
       -webkit-box-align: center;
           -ms-flex-align: center;
               align-items: center;
+  }
+  .cmb-tabs ul.cmb-tab-nav li i, 
+  .cmb-tabs ul.cmb-tab-nav li i:before {
+      font-size: 16px;
+      vertical-align: middle;
   }
   .cmb-tabs ul.cmb-tab-nav li i,
   .cmb-tabs ul.cmb-tab-nav li img{
