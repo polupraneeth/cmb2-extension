@@ -123,6 +123,11 @@ Helper
       font-size: 16px;
       vertical-align: middle;
   }
+  .mce-container .cmb-tabs i:before {
+      /* Fix for wysiwyg inside tabs. TinyMCE dashicons is resized from the style above */
+      font-size: 20px !important;
+      vertical-align: top !important;
+  }
   .cmb-tabs ul.cmb-tab-nav li a {
       border-right: 1px solid #eee;
       border-left: 2px solid #fafafa;
