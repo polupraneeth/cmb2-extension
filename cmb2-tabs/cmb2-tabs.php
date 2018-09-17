@@ -446,7 +446,7 @@ if (!class_exists('CMB2_Tabs', false)) {
          * @since 1.0.0
          */
         protected function do_callback($cb) {
-            return call_user_func($cb, $this->cmb, $this);
+            return call_user_func($cb, CMB2_Tabs::$cmb, $this);
         }
 
 
