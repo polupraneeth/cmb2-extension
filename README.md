@@ -5,6 +5,7 @@ This is a CMB2 Extension repository which help modify the default behavior of [C
 
 Extension are organized into categories (folders) and each Extension is placed in its own file with a name that describes what it does.
 
+First attempt at a library. Lots more changes and fixes to do. Contributions are welcome.
 ## Usage
 You can view wiki page to usage and setup guide:
 [Documentation](https://github.com/stackadroit/cmb2-extensions/wiki)
