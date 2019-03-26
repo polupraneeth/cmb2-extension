@@ -5,7 +5,7 @@
  * @package     WordPress\Plugins\CMB2 Tabs
  * @author      Team StackAdroit <stackstudio@stackadroit.com>
  * @link        https://stackadroit.com
- * @version     1.0.6
+ * @version     1.0.7
  *
  * @copyright   2017 Team StackAdroit
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 3 or higher
