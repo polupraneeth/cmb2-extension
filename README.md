@@ -58,6 +58,6 @@ $cmb_demo->add_field( array(
 
 ### Screenshot
 
-![cmb2 tabs screen short 1](https://ps.w.org/cmb2-tabs/assets/screenshot-1.PNG)
-![cmb2 tabs screen short 2](https://ps.w.org/cmb2-tabs/assets/screenshot-2.PNG)
-![cmb2 tabs screen short 3](https://ps.w.org/cmb2-tabs/assets/screenshot-3.PNG)
+![cmb2 tabs screen short 1](https://ps.w.org/cmb2-tabs/assets/screenshot-1.PNG?rev=1702623)
+![cmb2 tabs screen short 2](https://ps.w.org/cmb2-tabs/assets/screenshot-2.PNG?rev=1702623)
+![cmb2 tabs screen short 3](https://ps.w.org/cmb2-tabs/assets/screenshot-3.PNG?rev=1702623)
