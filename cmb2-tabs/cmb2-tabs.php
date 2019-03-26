@@ -314,7 +314,7 @@ if (!class_exists('CMB2_Tabs', false)) {
 
             // Grab the result from the output buffer and store it.
             $echoed = ob_get_clean();
-            $outer_html = $echoed ? $echoed : $returned;
+            $outer_html = $echoed ? $echoed : null;
             $outer_html = apply_filters('cmb_output_html_row', $outer_html, $field_args, $field);            
             echo $outer_html;
             //return $field;
@@ -340,7 +340,7 @@ if (!class_exists('CMB2_Tabs', false)) {
 
             // Grab the result from the output buffer and store it.
             $echoed = ob_get_clean();
-            $outer_html = $echoed ? $echoed : $returned;
+            $outer_html = $echoed ? $echoed : null;
             $outer_html = apply_filters('cmb_output_html_row', $outer_html, $field_args, $field_group);            
 
             echo $outer_html;
