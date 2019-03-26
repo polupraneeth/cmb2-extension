@@ -13,7 +13,7 @@ You can view wiki page to usage and setup guide:
 ## CMB2 Tabs
 [CMB2 Tabs](https://wordpress.org/plugins/cmb2-tabs/) is an extenstion for [CMB2](https://github.com/WebDevStudios/CMB2/) which allow you to oragnize fields into tabs.
 
-![cmb2 tabs](https://ps.w.org/cmb2-tabs/assets/screenshot-3.PNG?rev=1702623)
+![cmb2 tabs](https://ps.w.org/cmb2-tabs/assets/banner-772x250.png?rev=1702623)
 
 ### Example
 ```php
