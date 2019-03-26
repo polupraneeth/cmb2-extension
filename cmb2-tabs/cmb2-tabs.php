@@ -18,7 +18,7 @@
  * Author URI:        https://stackadroit.com
  * Github Plugin URI: https://github.com/stackadroit/cmb2-extensions
  * Github Branch:     master
- * Version:           1.0.6
+ * Version:           1.0.7
  * License:           GPL v3
  *
  * Copyright (C) 2017, Team StackAdroit - stackstudio@stackadroit.com
