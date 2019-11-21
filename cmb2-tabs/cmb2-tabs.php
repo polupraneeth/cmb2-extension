@@ -5,9 +5,9 @@
  * @package     WordPress\Plugins\CMB2 Tabs
  * @author      Team StackAdroit <stackstudio@stackadroit.com>
  * @link        https://stackadroit.com
- * @version     1.0.7
+ * @version     1.0.8
  *
- * @copyright   2017 Team StackAdroit
+ * @copyright   2019 Team StackAdroit
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 3 or higher
  *
  * @wordpress-plugin
@@ -18,10 +18,10 @@
  * Author URI:        https://stackadroit.com
  * Github Plugin URI: https://github.com/stackadroit/cmb2-extensions
  * Github Branch:     master
- * Version:           1.0.7
+ * Version:           1.0.8
  * License:           GPL v3
  *
- * Copyright (C) 2017, Team StackAdroit - stackstudio@stackadroit.com
+ * Copyright (C) 2019, Team StackAdroit - stackstudio@stackadroit.com
  *
  * GNU General Public License, Free Software Foundation <http://creativecommons.org/licenses/GPL/3.0/>
  *
@@ -46,7 +46,7 @@ if (!defined('ABSPATH')) {
 }
 
 if (!class_exists('CMB2_Tabs', false)) {
-    
+
     /**
      * Class CMB2_Tabs
      * 
@@ -61,20 +61,12 @@ if (!class_exists('CMB2_Tabs', false)) {
     class CMB2_Tabs {
 
         /**
-         * Priority on which our actions are hooked in.
-         *
-         * @const int
-         * @since 1.0.0
-         */
-        const PRIORITY = 99996;
-
-        /**
          * Current version number
          *
          * @const string
          * @since 1.0.0
          */
-        const VERSION = '1.0.6';
+        const VERSION = '1.0.8';
 
         /**
          * The url which is used to load local resources
@@ -110,7 +102,7 @@ if (!class_exists('CMB2_Tabs', false)) {
         public $active_panel = '';
 
         /**
-         * Deactive Conditional tabs "show_on_cb"
+         * Deactivate Conditional tabs "show_on_cb"
          *
          * @var array
          * @since 1.0.0
@@ -118,7 +110,7 @@ if (!class_exists('CMB2_Tabs', false)) {
         public $conditional = array();
 
         /**
-         * Store all output of fields
+         * Store all output fields
          * This is used to put fields in correct <div> for tabs
          *
          * @var array
@@ -140,8 +132,9 @@ if (!class_exists('CMB2_Tabs', false)) {
             add_action('cmb2_before_form', array($this, 'render_nav'), 20, 4);
             add_action('cmb2_after_form', array($this, 'show_panels'), 10, 4);
 
-            add_filter('cmb2_wrap_classes', array($this, 'panel_wraper_class'), 10, 2);
-            add_filter('cmb_output_html_row', array($this, 'capture_fields'), 10, 3);
+            add_filter('cmb2_wrap_classes', array($this, 'panel_wrapper_class'), 10, 2);
+            add_filter('cmb2_field_arguments_raw', array($this, 'update_field_arguments'), 40, 2);
+            add_filter('cmb2_tabs_output_html_row', array($this, 'capture_fields'), 10, 3);
         }
 
         /**
@@ -149,9 +142,9 @@ if (!class_exists('CMB2_Tabs', false)) {
          *
          * @since 1.0.0
          */
-        public function opening_div($cmb_id, $object_id, $object_type, $cmb)
-        {
-            if (!$cmb->prop("tabs")) {
+        public function opening_div($cmb_id, $object_id, $object_type, $cmb) {
+
+            if (!$cmb->prop("tabs")){
                 return;
             }
 
@@ -165,11 +158,7 @@ if (!class_exists('CMB2_Tabs', false)) {
             echo '<div class="'.$class.'">';
 
             // Current cmb2 instance
-            CMB2_Tabs::$cmb = $cmb;
-
-            // Add cmb2_tabs custome render callback to instance
-            CMB2_Field::$callable_fields[] = 'cmb2_tabs_render_row_cb';
-
+            CMB2_Tabs::$cmb = &$cmb;
             // Set 'true' to let us know that we're working on a meta box that has tabs
             $this->active = true;
             //setup style and script for tabs
@@ -181,8 +170,8 @@ if (!class_exists('CMB2_Tabs', false)) {
          *
          * @since 1.0.0
          */
-        public function closing_div()
-        {
+        public function closing_div() {
+
             if (!$this->active) {
                 return;
             }
@@ -195,12 +184,11 @@ if (!class_exists('CMB2_Tabs', false)) {
         }
 
         /**
-         * Render Navigration
+         * Render Navigation
          *
          * @since 1.0.0
          */
-        public function render_nav($cmb_id, $object_id, $object_type, $cmb) 
-        {
+        public function render_nav($cmb_id, $object_id, $object_type, $cmb) {
            
             $tabs = $cmb->prop("tabs");
 
@@ -209,11 +197,9 @@ if (!class_exists('CMB2_Tabs', false)) {
                 echo '<ul class="cmb-tab-nav">';
                 $active_nav = true;
 
-                foreach ($tabs as $key => $tab_data)
-                {
+                foreach ($tabs as $key => $tab_data) {
 
-                        if (is_string($tab_data))
-                        {
+                        if (is_string($tab_data)) {
                             $tab_data = array('label' => $tab_data);
                         }
 
@@ -222,26 +208,24 @@ if (!class_exists('CMB2_Tabs', false)) {
                             'label' => '',
                             'show_on_cb' => null,
                         ));
+                        $tab_data = array_unique($tab_data);
 
-                        if ($tab_data['show_on_cb'] && $this->do_callback($tab_data['show_on_cb'])) {
+                        if ($tab_data['show_on_cb'] && CMB2_Tabs::$cmb->do_callback($tab_data['show_on_cb'], CMB2_Tabs::$cmb, $this)) {
                             $this->conditional[] = $key;
                             continue;
                         }  
 
-                        //set icon defult it it's emty 
+                        //set icon default it's empty
                         $tab_data['icon'] = $tab_data['icon'] ? $tab_data['icon'] : "dashicons-admin-post";
                         
                         // If icon is URL to image
-                        if (filter_var($tab_data['icon'], FILTER_VALIDATE_URL))
-                        {
+                        if (filter_var($tab_data['icon'], FILTER_VALIDATE_URL)) {
                             $icon = '<img src="'.$tab_data['icon'].'">';
                         }
                         // If icon is icon font
-                        else
-                        {
+                        else {
                             // If icon is dashicon, auto add class 'dashicons' for users
-                            if (false !== strpos($tab_data['icon'], 'dashicons'))
-                            {
+                            if (false !== strpos($tab_data['icon'], 'dashicons')) {
                                 $tab_data['icon'] .= ' dashicons';
                             }
                             // Remove duplicate classes
@@ -273,97 +257,18 @@ if (!class_exists('CMB2_Tabs', false)) {
         }
 
         /**
-         * Add class to wraper div of CMB2 panel
-         *
-         * @since 1.0.0
-         */
-        public function panel_wraper_class($classes, $box) 
-        {
-
-            if ($this->active) {
-                $classes[] = 'cmb-tabs-panel';
-            }
-            if ($this->active && $this->fields_output) {
-                $classes[] = 'cmb2-wrap-tabs';
-            }
-
-            return array_unique($classes);
-        }
-        
-        /**
-         * Modified CMB2 render row function to capture rows in a output string
-         *
-         * @since 1.0.0
-         */
-        public static function tabs_render_row_cb($field_args, $field) 
-        {
-            
-            // Ok, callback is good, let's run it and store the result.
-            ob_start();
-            
-            if ( 'group' === $field_args['type'] ) {
-            	self::tabs_render_group_row_cb($field_args, $field);
-            }else{
-            	if ($field->args( 'cmb2_tabs_render_row_cb' )) {
-	                CMB2_Tabs::$cmb->peform_param_callback( 'cmb2_tabs_render_row_cb' );
-	            } else {
-	                $field->render_field_callback();
-	            }
-            }
-            
-
-            // Grab the result from the output buffer and store it.
-            $echoed = ob_get_clean();
-            $outer_html = $echoed ? $echoed : null;
-            $outer_html = apply_filters('cmb_output_html_row', $outer_html, $field_args, $field);            
-            echo $outer_html;
-            //return $field;
-        }
-
-
-        /**
-         * Modified CMB2 render row function to capture Group rows in a output string
-         *
-         * @since 1.0.5
-         */
-        public static function tabs_render_group_row_cb($field_args, $field_group) 
-        {
-
-            // Ok, callback is good, let's run it and store the result.
-            ob_start();
-                
-            if ($field_group->args( 'cmb2_tabs_render_row_cb' )) {
-                CMB2_Tabs::$cmb->render_group_callback( 'cmb2_tabs_render_row_cb' );
-            } else {
-                CMB2_Tabs::$cmb->render_group_callback($field_args, $field_group);
-            } 
-
-            // Grab the result from the output buffer and store it.
-            $echoed = ob_get_clean();
-            $outer_html = $echoed ? $echoed : null;
-            $outer_html = apply_filters('cmb_output_html_row', $outer_html, $field_args, $field_group);            
-
-            echo $outer_html;
-
-            //return $field_group;
-        }
-
-
-        /**
          * Display tab navigation for meta box
          * Note that: this public function is hooked to 'cmb2_after_form', when all fields are outputted
          * (and captured by 'capture_fields' public function)
          *
          * @since 1.0.0
          */
-        public function show_panels($cmb_id, $object_id, $object_type, $cmb)
-        {
+        public function show_panels($cmb_id, $object_id, $object_type, $cmb) {
             if (!$this->active) {return; }
 
             echo '<div class="', esc_attr($cmb->box_classes()), '"><div id="cmb2-metabox-', sanitize_html_class($cmb_id), '" class="cmb2-metabox cmb-field-list">';
 
-                foreach ($this->fields_output as $tab => $fields)
-                {   
+                foreach ($this->fields_output as $tab => $fields) {
                     if (!in_array($tab, $this->conditional, TRUE)) {
                             $active_panel = $this->active_panel == $tab ? "show" : "";
                             echo '<div class="'.$active_panel.' cmb-tab-panel cmb-tab-panel-'.$tab.'">';
@@ -375,14 +280,103 @@ if (!class_exists('CMB2_Tabs', false)) {
             echo '</div></div>';
         }
 
+        /**
+         * Add class to wrapper div of CMB2 panel
+         *
+         * @since 1.0.0
+         */
+        public function panel_wrapper_class($classes, $box) {
+
+            if ($this->active) {
+                $classes[] = 'cmb-tabs-panel';
+            }
+            if ($this->active && $this->fields_output) {
+                $classes[] = 'cmb2-wrap-tabs';
+            }
+
+            return array_unique($classes);
+        }
+
+        /**
+         * echo field captured to print in tabs container.
+         *
+         * @since 1.0.8
+         */
+        public static function echo_render_row($echoed, $outer_html, $field_args, $field){
+            $outer_html = $echoed ? $echoed : null;
+            $outer_html = apply_filters('cmb2_tabs_output_html_row', $outer_html, $field_args, $field);
+            echo $outer_html;
+        }
+
+        /**
+         * Modified CMB2 render row function to capture rows in a output string
+         *
+         * @since 1.0.0
+         */
+        public static function tabs_render_row_cb($field_args, $field) {
+            
+            // Ok, callback is good, let's run it and store the result.
+            ob_start();
+
+            if ( 'group' === $field_args['type'] ) {
+            	self::tabs_render_group_row_cb($field_args, $field);
+            }elseif ( $field_args['user_render_row_cb'] != false){
+                $field->peform_param_callback($field_args['user_render_row_cb']);
+            } else{
+            	 $field->render_field_callback();
+            }
+
+            // Grab the result from the output buffer and store it.
+            $echoed = ob_get_clean();
+            self::echo_render_row($echoed, $outer_html, $field_args, $field);
+        }
+
+        /**
+         * Modified CMB2 render row function to capture Group rows in a output string
+         *
+         * @since 1.0.5
+         */
+        public static function tabs_render_group_row_cb($field_args, $field_group) {
+            // Ok, callback is good, let's run it and store the result.
+            ob_start();
+
+            CMB2_Tabs::$cmb->render_group_callback($field_args, $field_group);
+
+            // Grab the result from the output buffer and store it.
+            $echoed = ob_get_clean();
+            self::echo_render_row($echoed, $outer_html, $field_args, $field);
+        }
+
+        /**
+         * Save field output into class variable to output later
+         *
+         * @since 1.0.7
+         */
+        function update_field_arguments($arg, $field) {
+
+            if (!$this->active ){
+                return $arg;
+             }
+
+            $user_render_row_cb =  (is_string($arg['render_row_cb'])) && (is_array($arg['render_row_cb'])
+                                        && $arg['render_row_cb'][1] != 'render_field_callback' ) ?
+                                        $arg['render_row_cb']: false;
+
+            if ( 'group' === $arg['type'] ) {
+                $defaults = array('render_row_cb' => array('CMB2_Tabs', 'tabs_render_group_row_cb'));
+            }else{
+                $defaults = array('render_row_cb' => array('CMB2_Tabs', 'tabs_render_row_cb'), 'user_render_row_cb' => $user_render_row_cb);
+            }
+
+          return  wp_parse_args($defaults, $arg);
+        }
 
         /**
          * Save field output into class variable to output later
          *
          * @since 1.0.0
          */
-        public function capture_fields($output, $field_args, $field)
-        {
+        public function capture_fields($output, $field_args, $field) {
             // If meta box doesn't have tabs, do nothing
             if (!$this->active || !isset($field_args['tab'])) { return $output; }
 
@@ -396,7 +390,6 @@ if (!class_exists('CMB2_Tabs', false)) {
             // Return empty string to let Meta Box plugin echoes nothing
             return '';
         }
-
     
         /**
          * Enqueue scripts and styles
@@ -420,6 +413,7 @@ if (!class_exists('CMB2_Tabs', false)) {
          * @since 1.0.0
          */
         public static function url($path = '') {
+
             if (self::$url) { return self::$url.$path; }
 
             /**
@@ -439,16 +433,6 @@ if (!class_exists('CMB2_Tabs', false)) {
 
             return self::$url.$path;
         }
-
-        /**
-         * Handles metabox property callbacks, and passes this $cmb object as property.
-         *
-         * @since 1.0.0
-         */
-        protected function do_callback($cb) {
-            return call_user_func($cb, CMB2_Tabs::$cmb, $this);
-        }
-
 
     }
 
