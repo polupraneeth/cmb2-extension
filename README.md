@@ -42,7 +42,6 @@ $cmb_demo->add_field( array(
 	'id'   => $prefix . 'textmedium',
 	'type' => 'text_medium',
 	'tab'  => 'contact',
-	'render_row_cb' => array( 'CMB2_Tabs', 'tabs_render_row_cb' ),
 ) );
 
 // Add new field
@@ -52,7 +51,6 @@ $cmb_demo->add_field( array(
 	'id'   => $prefix . 'textmedium2',
 	'type' => 'text_medium',
 	'tab'  => 'social',
-	'render_row_cb' => array( 'CMB2_Tabs', 'tabs_render_row_cb' ),
 ) );
 ```
 
