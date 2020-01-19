@@ -7,8 +7,8 @@ _Support is not offered for this library, and the likelihood that the maintainer
 
 Before reporting a bug
 ---
-1. Please review the [documentation](https://github.com/stackadroit/cmb2-extensions/wiki). 
-2. Search [issues](https://github.com/stackadroit/cmb2-extensions/issues) to see if the issue has been previously reported.
+1. Please review the [documentation](https://github.com/polupraneeth/cmb2-extension/wiki). 
+2. Search [issues](https://github.com/polupraneeth/cmb2-extension/issues) to see if the issue has been previously reported.
 3. Install the trunk version of CMB2 and test there.
 
 
@@ -26,7 +26,7 @@ All contributions welcome. If you would like to submit a pull request, please fo
 
 1. Make sure you have a GitHub account.
 2. Fork the repository on GitHub.
-3. **Check out the trunk version of CMB2 Extensions.** If you submit to the master branch, the PR will be closed with a link back to this document.
+3. **Check out the trunk version of CMB2 Extension.** If you submit to the master branch, the PR will be closed with a link back to this document.
 4. **Verify your issue still exists in the trunk branch.**
 5. Make changes to your clone of the repository.
 	1. Please follow the [WordPress code standards](https://make.wordpress.org/core/handbook/coding-standards).
