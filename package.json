@@ -2,7 +2,7 @@
   "name": "cmb2-extension",
   "title": "CMB2 Extension",
   "version": "1.0.0",
-  "description": "This is a CMB2 Extension repository which help modify the default behavior of CMB2 and extends it's functionality.",
+  "description": "CMB2 Extension is to extend cmb2 plugin functionality and organize it's Add-ons at one place.",
   "main": "Gruntfile.js",
   "directories": {
     "test": "tests"
@@ -14,17 +14,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/polupraneeth/cmb2-extension/"
+    "url": "https://github.com/polupraneeth/cmb2-extension"
   },
   "author": {
-    "name": "Praneeth Polu",
+    "name": "polupraneeth",
     "email": "contact@polupraneeth.me",
-    "url": "https://github.com/polupraneeth/"
+    "url": "http://polupraneeth.me"
   },
-  "license": "GPL-3.0+",
+  "license": "GPLv3",
   "bugs": {
     "url": "https://github.com/polupraneeth/cmb2-extension/issues"
   },
+  "homepage": "https://wordpress.org/plugins/cmb2-extension/",
   "devDependencies": {
     "grunt": "^1.0.4",
     "grunt-asciify": "~0.2.2",

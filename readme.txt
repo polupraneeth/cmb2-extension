@@ -2,8 +2,7 @@
 
 ![CMB2](https://ps.w.org/cmb2-tabs/assets/banner-772x250.png?rev=1702623)
 
-**Contributors:**      [polupraneeth](https://github.com/polupraneeth), [stackadroit](https://github.com/stackadroit),
-
+**Contributors:**      [polupraneeth](https://github.com/polupraneeth), [stackadroit](https://github.com/stackadroit)
 **Homepage:**          [github](https://github.com/polupraneeth/cmb2-extension)  
 **Tags:**              metaboxes, forms, fields, options, settings  
 **Requires at least:** 3.8.0  
@@ -49,7 +48,7 @@ If including the library in your plugin or theme:
 
 ## Usage
 You can view wiki page to usage and setup guide:
-[Documentation](https://github.com/polupraneeth/cmb2-extensions/wiki)
+[Documentation](https://github.com/stackadroit/cmb2-extensions/wiki)
 
 ## Known Issues
 

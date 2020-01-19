@@ -66,7 +66,7 @@ function cmb2_ext_demo_metabox()
     ));
 
     //Image Select
-    $image_path = class_exists('CMB_Extension') ? CMB_Extension::url('/assets/images/') : '';
+    $image_path = 'https://github.com/polupraneeth/cmb2-extension/blob/master/assets/images/';
     $cmb_ext_demo->add_field(array(
         'name' => esc_html__('Image Select', 'cmb2-ext'),
         'desc' => esc_html__('page layout using image select', 'cmb2-ext'),
@@ -75,9 +75,9 @@ function cmb2_ext_demo_metabox()
         'tab' => 'general',
         //'default' => 'sidebar-left',
         'options' => array(
-            'disabled' => array('title' => 'Full Width', 'alt' => 'Full Width', 'src' => ($image_path ."image-select/layout-fluid.png")),
-            'sidebar-left' => array('title' => 'Sidebar Left', 'alt' => 'Sidebar Left', 'src' => ($image_path ."image-select/layout-sidebar-left.png")),
-            'sidebar-right' => array('title' => 'Sidebar Right', 'alt' => 'Sidebar Right', 'src' => ($image_path . "image-select/layout-sidebar-right.png")),
+            'disabled' => array('title' => 'Full Width', 'alt' => 'Full Width', 'src' => ($image_path ."image-select/layout-fluid.png?raw=true")),
+            'sidebar-left' => array('title' => 'Sidebar Left', 'alt' => 'Sidebar Left', 'src' => ($image_path ."image-select/layout-sidebar-left.png?raw=true")),
+            'sidebar-right' => array('title' => 'Sidebar Right', 'alt' => 'Sidebar Right', 'src' => ($image_path . "image-select/layout-sidebar-right.png?raw=true")),
         )
     ));
 
