@@ -1,16 +1,16 @@
 # CMB2 Extension
 
-![CMB2](https://ps.w.org/cmb2-tabs/assets/banner-772x250.png?rev=1702623)
+![CMB2 Extension](https://raw.githubusercontent.com/wiki/polupraneeth/cmb2-extension/images/cmb2-extension-banner.gif)
 
-**Contributors:**      [polupraneeth](https://github.com/polupraneeth), [stackadroit](https://github.com/stackadroit),
-
+**Contributors:**      [polupraneeth](https://github.com/polupraneeth), [stackadroit](https://github.com/stackadroit)  
 **Homepage:**          [github](https://github.com/polupraneeth/cmb2-extension)  
 **Tags:**              metaboxes, forms, fields, options, settings  
 **Requires at least:** 3.8.0  
-**Tested up to:**      5.3.2
+**Tested up to:**      5.3.2  
 **Stable tag:**        1.0.0  
 **License:**           GPLv3 or later  
 **License URI:**       [http://www.gnu.org/licenses/gpl-3.0.html](http://www.gnu.org/licenses/gpl-3.0.html)  
+
 
 Complete contributors list found here: [github.com/CMB2/CMB2/graphs/contributors](https://github.com/CMB2/CMB2/graphs/contributors)
 
