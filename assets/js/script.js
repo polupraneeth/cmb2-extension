@@ -11,11 +11,18 @@ window.CMB2Ext = window.CMB2Ext || {};
     var $id = function (selector) {
         return $(document.getElementById(selector));
     };
+    cmbExt.$id = $id;
     var defaults = {};
 
     //console.log();
     cmbExt.init = function () {
         $document = $(document);
+        
+        // Setup the CMB2 Extenstion object defaults.
+        $.extend( cmbExt, defaults );
+
+        //cmb.trigger( 'cmb_Ext_pre_init' );
+
         var $metabox = cmb.metabox();
         var $repeatGroup = $metabox.find('.cmb-repeatable-group');
 
@@ -32,6 +39,9 @@ window.CMB2Ext = window.CMB2Ext || {};
             .on('change.cmbAnimation', '.cmb-type-animation select', cmbExt.animateOnChange)
             .on('click.cmbAnimationPreview', '.cmb-type-animation .cmb-ext-animation-preview-button', cmbExt.animateOnClick)
             .on('click', 'ul.cmb-image-select-list li input[type="radio"]', cmbExt.triggerImageSelect);
+
+        //cmb.trigger( 'cmb_ext_init' );
+
     };
     /*--------------------------------------------------------------
     Tabs
@@ -533,6 +543,13 @@ window.CMB2Ext = window.CMB2Ext || {};
             $(this).remove();
         });
     });
+
+
+    /*--------------------------------------------------------------
+    Functions
+    --------------------------------------------------------------*/
+
+    
 
     // Kick it off!
     $(cmbExt.init);

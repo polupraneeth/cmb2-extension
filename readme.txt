@@ -12,7 +12,7 @@
 **License URI:**       [http://www.gnu.org/licenses/gpl-3.0.html](http://www.gnu.org/licenses/gpl-3.0.html)  
 
 
-Complete contributors list found here: [github.com/CMB2/CMB2/graphs/contributors](https://github.com/CMB2/CMB2/graphs/contributors)
+Complete contributors list found here: [github.com/CMB2/CMB2/graphs/contributors](https://github.com/polupraneeth/cmb2-extension/graphs/contributors)
 
 ## Description
 

@@ -16,7 +16,7 @@
             "role": "Developer"
         }
     ],
-    "keywords": ["wordpress", "plugin", "metabox", "cmb2"],
+    "keywords": ["wordpress", "plugin", "metabox", "cmb2", "cmb2-extension"],
     "homepage": "https://github.com/polupraneeth/cmb2-extension",
     "type": "wordpress-plugin",
     "support": {
@@ -24,7 +24,9 @@
         "source": "https://github.com/polupraneeth/cmb2-extension"
     },
     "require": {
-        "php": ">5.2.4"
+        "php": ">5.2.4",
+        //"cmb2/cmb2"
+
     },
     "suggest": {
         "composer/installers": "~1.0"

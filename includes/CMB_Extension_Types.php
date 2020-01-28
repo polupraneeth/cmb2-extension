@@ -26,13 +26,13 @@ class CMB_Extension_Types
         'image_select',
         'icon_select',
         'ajax_search',
-        'range_slider', //not working
+        //'range_slider', //not working
         'animation',
         'button_set',
-        'location', //not working (also refactor sanitize)
+        //'location', //not working (also refactor sanitize)
         'order',
         'unit',
-        'font' // save is not working
+        //'font' // save is not working
     );
 
     /**
