@@ -24,9 +24,7 @@
         "source": "https://github.com/polupraneeth/cmb2-extension"
     },
     "require": {
-        "php": ">5.2.4",
-        //"cmb2/cmb2"
-
+        "php": ">5.2.4"
     },
     "suggest": {
         "composer/installers": "~1.0"
