@@ -76,7 +76,7 @@ class CMB_Extension_JS extends CMB2_JS
     public static function ajax_search($enqueue = false)
     {
         $func = $enqueue ? 'wp_enqueue_script' : 'wp_register_script';
-        $func('jquery-autocomplete-ajax-search', CMB_Extension::url('assets/js/vendor/jquery.autocomplete.min.js'), array('jquery'), CMB2_EXTENSION_VERSION);
+        $func('jquery-autocomplete-ajax-search', CMB_Extension::url('assets/js/vendore/jquery.autocomplete.min.js'), array('jquery'), CMB2_EXTENSION_VERSION);
     }
 
      /**
@@ -104,7 +104,7 @@ class CMB_Extension_JS extends CMB2_JS
     public static function select2($enqueue = false)
     {
         $func = $enqueue ? 'wp_enqueue_script' : 'wp_register_script';
-        $func('select2', CMB_Extension::url('assets/js/vendor/select2.full.min.js'),  array('jquery'), CMB2_EXTENSION_VERSION, true);
+        $func('select2', CMB_Extension::url('assets/js/vendore/select2.full.min.js'),  array('jquery'), CMB2_EXTENSION_VERSION, true);
     }
 
     /**
