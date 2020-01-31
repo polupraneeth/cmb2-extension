@@ -65,7 +65,7 @@ ocular.phar
 phpunit.xml
 
 # Composer
-vendor
+!/vendor/
 
 # General
 NOTES.md
