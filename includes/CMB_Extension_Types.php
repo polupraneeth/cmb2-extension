@@ -40,7 +40,6 @@ class CMB_Extension_Types
      */
     protected $fields_css_dependency = array(
         'icon_select' => array('jqueryfontselectormain', 'jqueryfontselector'),
-        'range_slider' => array('slider-ui'),
         'animation' => array('animate'),
         'font' => array('select2'),
     );
@@ -48,11 +47,6 @@ class CMB_Extension_Types
     public function ajax_search($args)
     {
         return $args[4]->get_new_render_type(__FUNCTION__, 'CMB_Extension_Type_Ajax_Search', $args)->render();
-    }
-
-    public function range_slider($args)
-    {
-        return $args[4]->get_new_render_type(__FUNCTION__, 'CMB_Extension_Type_Range_Slider', $args)->render();
     }
 
     public function animation($args)
@@ -73,11 +67,6 @@ class CMB_Extension_Types
     public function unit($args)
     {
         return $args[4]->get_new_render_type(__FUNCTION__, 'CMB_Extension_Type_Unit', $args)->render();
-    }
-
-    public function font($args)
-    {
-        return $args[4]->get_new_render_type(__FUNCTION__, 'CMB_Extension_Type_Font', $args)->render();
     }
 
     /**
@@ -143,11 +132,6 @@ class CMB_Extension_Types
     public function icon_select($args)
     {
         return $args[4]->get_new_render_type(__FUNCTION__, 'CMB_Extension_Type_Icon_Select', $args)->render();
-    }
-
-    public function location($args)
-    {
-        return $args[4]->get_new_render_type(__FUNCTION__, 'CMB_Extension_Type_Location', $args)->render();
     }
 
     /**
