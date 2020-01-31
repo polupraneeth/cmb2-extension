@@ -169,18 +169,6 @@ function cmb2_ext_demo_metabox()
         )
     ));
 
-    //Font
-    $cmb_ext_demo->add_field(array(
-        'name' => esc_html__('Font', 'cmb2-ext'),
-        'desc' => esc_html__('Field description (optional)', 'cmb2-ext'),
-        'id' => $prefix . 'font',
-        'type' => 'font',
-        'tab' => 'general',
-        'attributes' => array(
-            'data-placeholder' => esc_html__('Choose a font', 'cmb2-ext'),
-        )
-    ));
-
     //Ajax Search single
     $cmb_ext_demo->add_field(array(
         'name' => esc_html__('Example Single', 'cmb2-ext'),
@@ -194,7 +182,6 @@ function cmb2_ext_demo_metabox()
             'posts_per_page' => -1
         )
     ));
-
 
     //Ajax Search Multiple
     $cmb_ext_demo->add_field(array(

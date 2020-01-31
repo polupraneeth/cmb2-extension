@@ -21,8 +21,6 @@ window.CMB2Ext = window.CMB2Ext || {};
         // Setup the CMB2 Extenstion object defaults.
         $.extend( cmbExt, defaults );
 
-        //cmb.trigger( 'cmb_Ext_pre_init' );
-
         var $metabox = cmb.metabox();
         var $repeatGroup = $metabox.find('.cmb-repeatable-group');
 
@@ -36,11 +34,10 @@ window.CMB2Ext = window.CMB2Ext || {};
         $($metabox)
             .on('click', '.cmb2-ext-buttonset-label', cmbExt.toggleButtonSelect)
             .on('click', '.cmb-ext-content-wrap-field-switch .button', cmbExt.initContentWrap)
+            .on('click', 'ul.cmb-image-select-list li input[type="radio"]', cmbExt.triggerImageSelect)
             .on('change.cmbAnimation', '.cmb-type-animation select', cmbExt.animateOnChange)
             .on('click.cmbAnimationPreview', '.cmb-type-animation .cmb-ext-animation-preview-button', cmbExt.animateOnClick)
-            .on('click', 'ul.cmb-image-select-list li input[type="radio"]', cmbExt.triggerImageSelect);
-
-        //cmb.trigger( 'cmb_ext_init' );
+            ;
 
     };
     /*--------------------------------------------------------------
@@ -156,25 +153,6 @@ window.CMB2Ext = window.CMB2Ext || {};
     };
 
     /*--------------------------------------------------------------
-    Font
-    --------------------------------------------------------------*/
-    $('.cmb-type-font select').each(function () {
-
-        $(this).higooglefonts({
-            theme: 'default cmb-ext-font-select2',
-            selectedCallback: function (e) {
-                console.log(e);
-            },
-            loadedCallback: function (font) {
-                console.log(font);
-                /*/////// This is where you should apply font.///////
-                /////////////////////////////////////////////////////*/
-                $("#paragraph").css("font-family", font); // Change the font-family of the #paragraph
-            }
-        });
-    });
-
-    /*--------------------------------------------------------------
     Icon
     --------------------------------------------------------------*/
     $('.cmb-ext-iconselect').each(function () {
@@ -250,178 +228,6 @@ window.CMB2Ext = window.CMB2Ext || {};
             });
         });
     });
-
-    /*--------------------------------------------------------------
-      Location
-    --------------------------------------------------------------*/
-    var maps = [];
-
-    $('.cmb-type-pw-map').each(function () {
-        initializeMap($(this));
-    });
-
-    function initializeMap(mapInstance) {
-        var searchInput = mapInstance.find('.pw-map-search');
-        var mapCanvas = mapInstance.find('.pw-map');
-        var latitude = mapInstance.find('.pw-map-latitude');
-        var longitude = mapInstance.find('.pw-map-longitude');
-        var formatted_address = mapInstance.find('.pw-map-formatted_address');
-        var latLng = new google.maps.LatLng(54.800685, -4.130859);
-        var zoom = 5;
-
-        // If we have saved values, let's set the position and zoom level
-        if (latitude.val().length > 0 && longitude.val().length > 0) {
-            latLng = new google.maps.LatLng(latitude.val(), longitude.val());
-            zoom = 17;
-        }
-
-        // Map
-        var mapOptions = {
-            center: latLng,
-            zoom: zoom
-        };
-        var map = new google.maps.Map(mapCanvas[0], mapOptions);
-
-        // Marker
-        var markerOptions = {
-            map: map,
-            draggable: true,
-            title: 'Drag to set the exact location'
-        };
-        var marker = new google.maps.Marker(markerOptions);
-
-        if (latitude.val().length > 0 && longitude.val().length > 0) {
-            marker.setPosition(latLng);
-        }
-
-        // Search
-        var autocomplete = new google.maps.places.Autocomplete(searchInput[0]);
-        autocomplete.bindTo('bounds', map);
-
-        google.maps.event.addListener(autocomplete, 'place_changed', function () {
-            var place = autocomplete.getPlace();
-            if (!place.geometry) {
-                return;
-            }
-
-            if (place.geometry.viewport) {
-                map.fitBounds(place.geometry.viewport);
-            } else {
-                map.setCenter(place.geometry.location);
-                map.setZoom(17);
-            }
-
-            marker.setPosition(place.geometry.location);
-
-            latitude.val(place.geometry.location.lat());
-            longitude.val(place.geometry.location.lng());
-            formatted_address.val(place.formatted_address);
-        });
-
-        $(searchInput).keypress(function (event) {
-            if (13 === event.keyCode) {
-                event.preventDefault();
-            }
-        });
-
-        // Allow marker to be repositioned
-        google.maps.event.addListener(marker, 'drag', function () {
-            latitude.val(marker.getPosition().lat());
-            longitude.val(marker.getPosition().lng());
-        });
-
-        maps.push(map);
-    }
-
-    // Resize map when meta box is opened
-    if (typeof postboxes !== 'undefined') {
-        postboxes.pbshow = function () {
-            var arrayLength = maps.length;
-            for (var i = 0; i < arrayLength; i++) {
-                var mapCenter = maps[i].getCenter();
-                google.maps.event.trigger(maps[i], 'resize');
-                maps[i].setCenter(mapCenter);
-            }
-        };
-    }
-
-    // When a new row is added, reinitialize Google Maps
-    $('.cmb-repeatable-group').on('cmb2_add_row', function (event, newRow) {
-        var groupWrap = $(newRow).closest('.cmb-repeatable-group');
-        groupWrap.find('.cmb-type-pw-map').each(function () {
-            initializeMap($(this));
-        });
-    });
-
-    /*--------------------------------------------------------------
-     Range Slider
-   --------------------------------------------------------------*/
-    // Init slider at start
-    $('.cmb-type-range-slider').each(function () {
-        initRow($(this));
-    });
-
-
-    // When a group row is shifted, reinitialise slider value
-    $('.cmb-repeatable-group').on('cmb2_shift_rows_complete', function (event, instance) {
-
-        var shiftedGroup = $(instance).closest('.cmb-repeatable-group');
-
-        shiftedGroup.find('.cmb-type-range-slider').each(function () {
-
-            $(this).find('.cmb-type-range-slider-field').slider('value', $(this).find('.cmb-type-range-slider-field-value').val());
-            $(this).find('.cmb-type-range-slider-field-value-text').text($(this).find('.cmb-type-range-slider-field-value').val());
-
-        });
-
-        return false;
-    });
-
-
-    // When a group row is added, reset slider
-    $('.cmb-repeatable-group').on('cmb2_add_row', function (event, newRow) {
-
-        $(newRow).find('.cmb-type-own-slider').each(function () {
-
-            initRow($(this));
-
-            $(this).find('.ui-slider-range').css('width', 0);
-            $(this).find('.cmb-type-range-slider-field').slider('value', 0);
-            $(this).find('.cmb-type-range-slider-field-value-text').text('0');
-        });
-
-        return false;
-    });
-
-
-    // Init slider
-    function initRow(row) {
-
-        // Loop through all cmb-type-slider-field instances and instantiate the slider UI
-        row.each(function () {
-            var $this = $(this);
-            var $value = $this.find('.cmb-type-range-slider-field-value');
-            var $slider = $this.find('.cmb-type-range-slider-field');
-            var $text = $this.find('.cmb-type-range-slider-field-value-text');
-            var slider_data = $value.data();
-
-            $slider.slider({
-                range: 'min',
-                value: slider_data.start,
-                min: slider_data.min,
-                max: slider_data.max,
-                step: slider_data.step,
-                slide: function (event, ui) {
-                    $value.val(ui.value);
-                    $text.text(ui.value);
-                }
-            });
-
-            // Initiate the display
-            $value.val($slider.slider('value'));
-            $text.text($slider.slider('value'));
-        });
-    }
 
     /*--------------------------------------------------------------
     Ajax Search
