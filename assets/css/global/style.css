@@ -191,7 +191,7 @@ input.cmb-ext-ajax-search {
 }
 
 .cmb-ext-content-wrap-field-switch .button .dashicons {
-    line-height: 26px;
+    vertical-align: middle;
 }
 
 .cmb-ext-content-wrap-multiple .cmb-ext-content-wrap-field-all {
@@ -221,6 +221,10 @@ input.cmb-ext-ajax-search {
 
 .cmb-ext-animation-preview-button {
     padding: 2px 6px 2px 8px !important;
+}
+
+.cmb-ext-animation-preview-button .dashicons{
+    vertical-align: middle;
 }
 
 .cmb-ext-animation-preview-text {
