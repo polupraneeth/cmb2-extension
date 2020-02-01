@@ -185,13 +185,11 @@ window.CMB2Ext = window.CMB2Ext || {};
             $(this).higooglefonts({
                 theme: 'default cmb-ext-font-select2',
                 selectedCallback:function(e){
-                    console.log(e);
+                    //console.log(e);
                 },
                 loadedCallback:function(font){
-                    console.log(font);
-                    /*/////// This is where you should apply font.///////
-                    /////////////////////////////////////////////////////*/
-                    $("#paragraph").css("font-family", font); // Change the font-family of the #paragraph
+                    //console.log(font);
+                    $(".font-preview").css("font-family", font);
                 }
             });
         });

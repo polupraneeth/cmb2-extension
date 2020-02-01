@@ -53,10 +53,12 @@ class CMB_Extension_Type_Font extends CMB2_Type_Text
         ));
 
         $this->field->add_js_dependencies('higooglefonts');
+        $preview = $this->field->args('preview') ? '<p class="font-preview">Preview</p>' : '';
 
         echo $this->rendered(
-            sprintf('<div class="cmb-ext-font"><select%s></select>%s</div>',
+            sprintf('<div class="cmb-ext-font"><select%s></select>%s %s</div>',
                 $this->field->concat_attrs($attrs),
+                $preview,
                 $this->_desc(true))
         );
 
