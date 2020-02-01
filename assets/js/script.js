@@ -24,21 +24,43 @@ window.CMB2Ext = window.CMB2Ext || {};
         var $metabox = cmb.metabox();
         var $repeatGroup = $metabox.find('.cmb-repeatable-group');
 
-        // Make File List drag/drop sortable:
+        // Make List drag/drop sortable:
         cmbExt.makeListSortable();
+        // Initialize ajax search
+        cmbExt.initAjaxSearch();
+        // Initialize font picker
+        cmbExt.initFontIcon();
 
+        // Tabs Initialize
         $('.cmb-ext-tab-nav').on('click', '.cmb-ext-tab-nav-menu', cmbExt.toggleTabNav);
 
-        $(document).on('widget-updated widget-added', cmbExt.makeListSortable);
+        // Initialize on widgets area
+        $(document)
+            .on('widget-updated widget-added', cmbExt.makeListSortable)
+            .on('widget-updated widget-added', cmbExt.initAjaxSearch);
 
         $($metabox)
             .on('click', '.cmb2-ext-buttonset-label', cmbExt.toggleButtonSelect)
             .on('click', '.cmb-ext-content-wrap-field-switch .button', cmbExt.initContentWrap)
             .on('click', 'ul.cmb-image-select-list li input[type="radio"]', cmbExt.triggerImageSelect)
             .on('change.cmbAnimation', '.cmb-type-animation select', cmbExt.animateOnChange)
+            .on('click', '.cmb-ext-ajax-search-results a.remover', cmbExt.ajax_search_remove_listener)
             .on('click.cmbAnimationPreview', '.cmb-type-animation .cmb-ext-animation-preview-button', cmbExt.animateOnClick)
-            ;
+            // Repeatable content
+            .on('click', '.cmb-add-row-button', cmbExt.RepeatableFontIconDestroy);
 
+        $('.cmb-repeat-table')
+            .on('click', 'cmb2_add_row', cmbExt.RepeatableFontIconRefresh);
+
+        if ( $repeatGroup.length ) {
+            $repeatGroup
+                .on( 'cmb2_add_row', cmbExt.initAjaxSearchGroup )
+                .on('cmb2_add_group_row_start', cmbExt.FontIconAddGroupDestroy)
+                .on('cmb2_shift_rows_start', cmbExt.FontIconAddGroupShiftedDestroy)
+                .on('cmb2_shift_rows_complete', cmbExt.FontIconAddGroupShiftedRefresh)
+                .on( 'cmb2_add_row', cmbExt.FontIconAddGroupRefresh );
+
+        }
     };
     /*--------------------------------------------------------------
     Tabs
@@ -84,13 +106,12 @@ window.CMB2Ext = window.CMB2Ext || {};
     /*--------------------------------------------------------------
     Animate
     --------------------------------------------------------------*/
-
     // Animate on change
     cmbExt.animateOnChange = function (e) {
         var $this = $(this);
-        var text = $this.next('.cmb-ext-animation-preview-text');
+        var text = $this.closest('.cmb-ext-animation').find('.cmb-ext-animation-preview-text');
 
-        if (text.length > 0) {
+        if (text.length) {
             text.attr('class', 'cmb-ext-animation-preview-text animated');
             text.addClass($(this).val());
         }
@@ -124,7 +145,7 @@ window.CMB2Ext = window.CMB2Ext || {};
     Order
     --------------------------------------------------------------*/
     cmbExt.makeListSortable = function () {
-        var $list = cmb.metabox().find('.sortable-list-ext');
+        var $list = cmb.$metabox.find('.sortable-list-ext');
         if ($list.length) {
             $list.sortable({
                 handle: 'span',
@@ -135,11 +156,12 @@ window.CMB2Ext = window.CMB2Ext || {};
     };
 
     /*--------------------------------------------------------------
-      Image Select
+    Image Select
     --------------------------------------------------------------*/
     cmbExt.triggerImageSelect = function (e) {
         e.stopPropagation(); // stop the click from bubbling
-        $(this).closest('ul').find('.cmb-image-select-selected').removeClass('cmb-image-select-selected');
+        var parent = $(this).closest('ul');
+        $('.cmb-image-select-selected', parent).removeClass('cmb-image-select-selected');
         $(this).parent().closest('li').addClass('cmb-image-select-selected');
     };
 
@@ -155,24 +177,55 @@ window.CMB2Ext = window.CMB2Ext || {};
     /*--------------------------------------------------------------
     Icon
     --------------------------------------------------------------*/
-    $('.cmb-ext-iconselect').each(function () {
-        $(this).fontIconPicker({
-            theme: 'fip-grey'
-        })
-    });
+    cmbExt.initFontIcon = function () {
+        $('.cmb-ext-iconselect').each(function () {
+            $(this).fontIconPicker({
+                theme: 'fip-grey'
+            })
+        });
+    };
+
+    // Before a new repeatable field row is added, destroy Select2. We'll reinitialise after the row is added
+    cmbExt.RepeatableFontIconDestroy = function (event) {
+        var $table = $(document.getElementById($(event.target).data('selector')));
+        var $oldRow = $table.find('.cmb-row').last();
+
+        $oldRow.find('.cmb-ext-iconselect').each(function () {
+            $(this).fontIconPicker().destroyPicker();
+        });
+    };
+
+    // When a new repeatable field row is added, clear selection and initialise Select2
+    cmbExt.RepeatableFontIconRefresh = function (event, newRow) {
+        // Reinitialise the field we previously destroyed
+        $(newRow).prev().find('.cmb-ext-iconselect').each(function () {
+            $('option:selected', this).removeAttr("selected");
+            $(this).fontIconPicker().refreshPicker({
+                theme: 'fip-grey'
+            });
+        });
+    };
 
     // Before a new group row is added, destroy Select2. We'll reinitialise after the row is added
-    $('.cmb-repeatable-group').on('cmb2_add_group_row_start', function (event, instance) {
+    cmbExt.FontIconAddGroupDestroy = function (event, instance) {
         var $table = $(document.getElementById($(instance).data('selector')));
         var $oldRow = $table.find('.cmb-repeatable-grouping').last();
 
         $oldRow.find('.cmb-ext-iconselect').each(function () {
             $(this).fontIconPicker().destroyPicker();
         });
-    });
+    };
+
+    // Before a group row is shifted, destroy Select2. We'll reinitialise after the row shift
+    cmbExt.FontIconAddGroupShiftedDestroy = function (event, instance) {
+        var groupWrap = $(instance).closest('.cmb-repeatable-group');
+        groupWrap.find('.cmb-ext-iconselect').each(function () {
+            $(this).fontIconPicker().destroyPicker();
+        });
+    };
 
     // When a new group row is added, clear selection and initialise Select2
-    $('.cmb-repeatable-group').on('cmb2_add_row', function (event, newRow) {
+    cmbExt.FontIconAddGroupRefresh = function (event, newRow) {
         $(newRow).find('.cmb-ext-iconselect').each(function () {
             $('option:selected', this).removeAttr("selected");
             $(this).fontIconPicker().refreshPicker({
@@ -186,53 +239,22 @@ window.CMB2Ext = window.CMB2Ext || {};
                 theme: 'fip-grey'
             });
         });
-    });
-
-    // Before a group row is shifted, destroy Select2. We'll reinitialise after the row shift
-    $('.cmb-repeatable-group').on('cmb2_shift_rows_start', function (event, instance) {
-        var groupWrap = $(instance).closest('.cmb-repeatable-group');
-        groupWrap.find('.cmb-ext-iconselect').each(function () {
-            $(this).fontIconPicker().destroyPicker();
-        });
-
-    });
+    };
 
     // When a group row is shifted, reinitialise Select2
-    $('.cmb-repeatable-group').on('cmb2_shift_rows_complete', function (event, instance) {
+    cmbExt.FontIconAddGroupShiftedRefresh = function (event, instance) {
         var groupWrap = $(instance).closest('.cmb-repeatable-group');
         groupWrap.find('.cmb-ext-iconselect').each(function () {
             $(this).fontIconPicker().refreshPicker({
                 theme: 'fip-grey'
             });
         });
-    });
-
-    // Before a new repeatable field row is added, destroy Select2. We'll reinitialise after the row is added
-    $('.cmb-add-row-button').on('click', function (event) {
-        var $table = $(document.getElementById($(event.target).data('selector')));
-        var $oldRow = $table.find('.cmb-row').last();
-
-        $oldRow.find('.cmb-ext-iconselect').each(function () {
-            $(this).fontIconPicker().destroyPicker();
-        });
-    });
-
-    // When a new repeatable field row is added, clear selection and initialise Select2
-    $('.cmb-repeat-table').on('cmb2_add_row', function (event, newRow) {
-
-        // Reinitialise the field we previously destroyed
-        $(newRow).prev().find('.cmb-ext-iconselect').each(function () {
-            $('option:selected', this).removeAttr("selected");
-            $(this).fontIconPicker().refreshPicker({
-                theme: 'fip-grey'
-            });
-        });
-    });
+    };
 
     /*--------------------------------------------------------------
     Ajax Search
     --------------------------------------------------------------*/
-    function init_ajax_search() {
+    cmbExt.initAjaxSearch = function () {
         $('.cmb-ext-ajax-search:not([data-ajax-search="true"])').each(function () {
             $(this).attr('data-ajax-search', true);
 
@@ -324,22 +346,14 @@ window.CMB2Ext = window.CMB2Ext || {};
         });
     }
 
-    // Initialize ajax search
-    init_ajax_search();
-
     // Initialize on group fields add row
-    $(document).on('cmb2_add_row', function (evt, $row) {
+    cmbExt.initAjaxSearchGroup = function (evt, $row) {
         $row.find('.cmb-ext-ajax-search').attr('data-ajax-search', false);
-        init_ajax_search();
-    });
-
-    // Initialize on widgets area
-    $(document).on('widget-updated widget-added', function () {
-        init_ajax_search();
-    });
+        cmbExt.initAjaxSearch();
+    };
 
     // On click remover listener
-    $('body').on('click', '.cmb-ext-ajax-search-results a.remover', function () {
+    cmbExt.ajax_search_remove_listener = function () {
         $(this).parent('li').fadeOut(400, function () {
             var field_id = $(this).parents('ul').attr('id').replace('_results', '');
 
@@ -348,16 +362,11 @@ window.CMB2Ext = window.CMB2Ext || {};
 
             $(this).remove();
         });
-    });
-
+    };
 
     /*--------------------------------------------------------------
-    Functions
+    Kick it off!
     --------------------------------------------------------------*/
-
-    
-
-    // Kick it off!
     $(cmbExt.init);
 
 })(window, document, jQuery, window.CMB2Ext, window.CMB2);
