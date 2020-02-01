@@ -51,6 +51,23 @@ If including the library in your plugin or theme:
 You can view wiki page to usage and setup guide:
 [Documentation](https://github.com/polupraneeth/cmb2-extensions/wiki)
 
+## Contributors
+
+### Code Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](.github/CONTRIBUTING.md)].
+
+### Financial Contributors
+
+Become a financial contributor and help us sustain our community.
+
+#### Individuals
+Your photo will show up here with a link to your profile.
+
+#### Organizations
+
+Support this project with your organization. Your logo will show up here with a link to your website. 
+
 ## Known Issues
 
 * Not all fields work well in a repeatable group.
