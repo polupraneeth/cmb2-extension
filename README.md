@@ -53,10 +53,6 @@ You can view wiki page to usage and setup guide:
 
 ## Contributors
 
-### Code Contributors
-
-This project exists thanks to all the people who contribute. [[Contribute](.github/CONTRIBUTING.md)].
-
 ### Financial Contributors
 
 Become a financial contributor and help us sustain our community.
@@ -67,6 +63,26 @@ Your photo will show up here with a link to your profile.
 #### Organizations
 
 Support this project with your organization. Your logo will show up here with a link to your website. 
+
+### Code Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](.github/CONTRIBUTING.md)].
+
+Thanks goes out to all these wonderful people:
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/ThomasDK81"><img src="https://avatars1.githubusercontent.com/u/1492545?v=4" width="100px;" alt=""/><br /><sub><b>ThomasDK81</b></sub></a><br /><a href="https://github.com/polupraneeth/cmb2-extension/commits?author=ThomasDK81" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/RubenMartins"><img src="https://avatars1.githubusercontent.com/u/5765731?v=4" width="100px;" alt=""/><br /><sub><b>RubenMartins</b></sub></a><br /><a href="https://github.com/polupraneeth/cmb2-extension/commits?author=RubenMartins" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/andercard"><img src="https://avatars1.githubusercontent.com/u/10929498?v=4" width="100px;" alt=""/><br /><sub><b>andercard</b></sub></a><br /><a href="https://github.com/polupraneeth/cmb2-extension/commits?author=andercard" title="Code">💻</a></td>
+  </tr>
+</table>
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## Known Issues
 
