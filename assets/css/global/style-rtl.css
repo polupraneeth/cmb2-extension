@@ -1,9 +1,3 @@
-/**
- * CMB2 Extension Global Styling
- * Copyright (c) 2019
- * Licensed GPLv2+
- */
-
 /* ==========================================================================
    Ajax Search
    ========================================================================== */
@@ -72,7 +66,7 @@ input.cmb-ext-ajax-search {
     font-size: 13px;
     line-height: 16px;
     color: #ccc;
-    margin: 0 8px 0 0;
+    margin: 0 0 0 8px;
     height: 16px;
     cursor: s-resize;
 }
@@ -92,7 +86,7 @@ input.cmb-ext-ajax-search {
 }
 
 .cmb-ext-ajax-search-results li a.remover {
-    float: right;
+    float: left;
     cursor: pointer;
     color: #ccc;
 }
@@ -125,13 +119,13 @@ input.cmb-ext-ajax-search {
 
 .cmb-ext-ajax-search-spinner {
     position: absolute;
-    margin: 9px 0 0 -25px;
+    margin: 9px -25px 0 0;
     width: 15px;
     display: none;
 }
 
 .columns-2 #postbox-container-1 .cmb-ext-ajax-search-spinner {
-    right: 25px;
+    left: 25px;
     margin: -23px 0 0 0;
 }
 
@@ -149,7 +143,7 @@ input.cmb-ext-ajax-search {
 .cmb-repeatable-group .cmb-ext-ajax-search-spinner {
     position: absolute;
     top: 50%;
-    right: 10px;
+    left: 10px;
     margin: -7px 0 0 0;
 }
 
@@ -210,7 +204,7 @@ input.cmb-ext-ajax-search {
    ========================================================================== */
 
 .cmb-ext-animation-preview-button, .cmb-ext-animation-preview-text {
-    margin-left: 6px !important;
+    margin-right: 6px !important;
     margin-top: 2px !important;
 
     -webkit-user-select: none;
@@ -220,7 +214,7 @@ input.cmb-ext-ajax-search {
 }
 
 .cmb-ext-animation-preview-button {
-    padding: 2px 6px 2px 8px !important;
+    padding: 2px 8px 2px 6px !important;
 }
 
 .cmb-ext-animation-preview-button .dashicons{
@@ -282,7 +276,7 @@ input.cmb-ext-ajax-search {
 }
 
 .cmb-ext-order-items.cmb-ext-order-inline li:not(:last-child) {
-    border-right: 0;
+    border-left: 0;
 }
 
 .cmb-ext-order-items.cmb-ext-order-inline li span {
@@ -313,12 +307,12 @@ input.cmb-ext-ajax-search {
     display: inline-block;
     margin: 0 10px 3px;
     min-width: 80px;
-    padding: 2px 15px 2px 0;
+    padding: 2px 0 2px 15px;
     text-align: center;
 }
 
 .cmb-type-image-select .cmb-image-select-list .cmb-image-select:first-child {
-    margin-left: 0
+    margin-right: 0
 }
 
 .cmb-type-image-select .cmb-image-select-list .cmb-image-select img {
@@ -348,8 +342,8 @@ input.cmb-ext-ajax-search {
     position: absolute;
     cursor: pointer;
     top: 0;
-    left: 0;
     right: 0;
+    left: 0;
     bottom: 0;
     background-color: #ccc;
     -webkit-transition: .4s;
@@ -361,7 +355,7 @@ input.cmb-ext-ajax-search {
     content: "";
     height: 17px;
     width: 17px;
-    left: 3px;
+    right: 3px;
     bottom: 3px;
     background-color: white;
     -webkit-transition: .4s;
@@ -377,9 +371,9 @@ input:focus + .cmb-ext-slider {
 }
 
 input:checked + .cmb-ext-slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+    -webkit-transform: translateX(-26px);
+    -ms-transform: translateX(-26px);
+    transform: translateX(-26px);
 }
 
 /* Rounded sliders */
@@ -396,7 +390,7 @@ input:checked + .cmb-ext-slider:before {
    ========================================================================== */
 
 .cmb2-ext-buttonset {
-    margin-right: 20px;
+    margin-left: 20px;
 }
 
 .cmb2-ext-buttonset .state-default {
@@ -417,13 +411,13 @@ input:checked + .cmb-ext-slider:before {
 }
 
 .cmb2-ext-buttonset label.cmb2-ext-buttonset-label:nth-child(2) {
-    border-bottom-left-radius: 4px;
-    border-top-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
 }
 
 .cmb2-ext-buttonset label.cmb2-ext-buttonset-label:nth-last-child(1) {
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
 }
 
 .cmb2-ext-buttonset .cmb2-ext-buttonset-label {
@@ -432,8 +426,8 @@ input:checked + .cmb-ext-slider:before {
     font-size: 13px;
     line-height: normal;
     padding: 6px 12px;
-    margin-left: 0;
-    margin-right: -4px;
+    margin-right: 0;
+    margin-left: -4px;
 }
 
 .cmb2-ext-buttonset .cmb2-ext-buttonset-label .buttonset-text {

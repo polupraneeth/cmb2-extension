@@ -21,21 +21,21 @@ function cmb2_ext_demo_metabox()
      */
     $cmb_ext_demo = new_cmb2_box(array(
         'id' => $prefix . 'metabox',
-        'title' => esc_html__('Test Metabox', 'cmb2-ext'),
+        'title' => esc_html__('Test Metabox', 'cmb-ext'),
         'object_types' => array('page'), // Post type
         // 'show_names' => true, // Show field names on the left
         // 'cmb_styles' => false, // false to disable the CMB stylesheet
         'tabs' => array(
             'general' => array(
-                'label' => __('General', 'cmb2-ext'),
+                'label' => __('General', 'cmb-ext'),
                 'icon' => 'dashicons-list-view', // Dashicon
             ),
             'search' => array(
-                'label' => __('Search', 'cmb2-ext'),
+                'label' => __('Search', 'cmb-ext'),
                 'icon' => 'dashicons-search', // Custom icon, using image
             ),
             'group' => array(
-                'label' => __('Group', 'cmb2-ext'),
+                'label' => __('Group', 'cmb-ext'),
                 'icon' => 'dashicons-buddicons-groups', // Dashicon
             ),
         ),
@@ -43,8 +43,8 @@ function cmb2_ext_demo_metabox()
 
     // Content Wrap
     $cmb_ext_demo->add_field(array(
-        'name' => esc_html__('Content Wrap', 'cmb2-ext'),
-        'desc' => esc_html__('Field description (optional)', 'cmb2-ext'),
+        'name' => esc_html__('Content Wrap', 'cmb-ext'),
+        'desc' => esc_html__('Field description (optional)', 'cmb-ext'),
         'id' => $prefix . 'content_wrap',
         'type' => 'content_wrap_style_editor',
         'tab' => 'general',
@@ -57,8 +57,8 @@ function cmb2_ext_demo_metabox()
 
     // Switch Button
     $cmb_ext_demo->add_field(array(
-        'name' => esc_html__('Switch Button', 'cmb2-ext'),
-        'desc' => esc_html__('Field description (optional)', 'cmb2-ext'),
+        'name' => esc_html__('Switch Button', 'cmb-ext'),
+        'desc' => esc_html__('Field description (optional)', 'cmb-ext'),
         'id' => $prefix . 'switch_button',
         'type' => 'switch_button',
         'tab' => 'general',
@@ -68,8 +68,8 @@ function cmb2_ext_demo_metabox()
     //Image Select
     $image_path = 'https://github.com/polupraneeth/cmb2-extension/blob/master/assets/images/';
     $cmb_ext_demo->add_field(array(
-        'name' => esc_html__('Image Select', 'cmb2-ext'),
-        'desc' => esc_html__('page layout using image select', 'cmb2-ext'),
+        'name' => esc_html__('Image Select', 'cmb-ext'),
+        'desc' => esc_html__('page layout using image select', 'cmb-ext'),
         'id' => $prefix . 'image_select',
         'type' => 'image_select',
         'tab' => 'general',
@@ -83,8 +83,8 @@ function cmb2_ext_demo_metabox()
 
     // Icon Select
     $cmb_ext_demo->add_field(array(
-        'name' => esc_html__('Icon Select', 'cmb2-ext'),
-        'desc' => esc_html__('Select Font Awesome icon', 'cmb2-ext'),
+        'name' => esc_html__('Icon Select', 'cmb-ext'),
+        'desc' => esc_html__('Select Font Awesome icon', 'cmb-ext'),
         'id' => $prefix . 'iconselect',
         'type' => 'icon_select',
         'tab' => 'general',
@@ -101,8 +101,8 @@ function cmb2_ext_demo_metabox()
 
     // Animation
     $cmb_ext_demo->add_field(array(
-        'name' => esc_html__('Test Animation', 'cmb2-ext'),
-        'desc' => esc_html__('Field description (optional)', 'cmb2-ext'),
+        'name' => esc_html__('Test Animation', 'cmb-ext'),
+        'desc' => esc_html__('Field description (optional)', 'cmb-ext'),
         'id' => $prefix . '_animation',
         'type' => 'animation',
         'tab' => 'general',
@@ -110,55 +110,55 @@ function cmb2_ext_demo_metabox()
         'preview' => true, // "Preview" text where animations are applied on click the play button
         'custom_groups' => array(
             // Format: '{group}' => '{group_label}'
-            'custom_group' => __('Custom Group', 'cmb2-ext'),
+            'custom_group' => __('Custom Group', 'cmb-ext'),
         ),
         'custom_animations' => array(
             // Format: '{group}' => array( '{animation}' => '{animation_label}' )
             'entrances' => array(
-                'custom_entrance' => __('Custom Entrance', 'cmb2-ext'),
+                'custom_entrance' => __('Custom Entrance', 'cmb-ext'),
             ),
             'custom_group' => array(
-                'custom_animation' => __('Custom Animation on a custom group', 'cmb2-ext'),
+                'custom_animation' => __('Custom Animation on a custom group', 'cmb-ext'),
             )
         ),
     ));
 
     //Button Set
     $cmb_ext_demo->add_field(array(
-        'name' => esc_html__('ButtonSet', 'cmb2-ext'),
-        'desc' => esc_html__('Field description (optional)', 'cmb2-ext'),
+        'name' => esc_html__('ButtonSet', 'cmb-ext'),
+        'desc' => esc_html__('Field description (optional)', 'cmb-ext'),
         'id' => $prefix . 'button_set',
         'type' => 'button_set',
         'tab' => 'general',
         'default' => 'left',
         'options' => array(
-            "" => __("Default", 'cmb2-ext'),
-            "left" => __("Left", 'cmb2-ext'),
-            "center" => __("Center", 'cmb2-ext'),
-            "right" => __("Right", 'cmb2-ext')
+            "" => __("Default", 'cmb-ext'),
+            "left" => __("Left", 'cmb-ext'),
+            "center" => __("Center", 'cmb-ext'),
+            "right" => __("Right", 'cmb-ext')
         ),
     ));
 
     //Order
     $cmb_ext_demo->add_field(array(
-        'name' => esc_html__('Order', 'cmb2-ext'),
-        'desc' => esc_html__('field description (optional)', 'cmb2-ext'),
+        'name' => esc_html__('Order', 'cmb-ext'),
+        'desc' => esc_html__('field description (optional)', 'cmb-ext'),
         'id' => $prefix . '_order',
         'type' => 'order',
         'tab' => 'general',
         // 'inline'        => true,
         'options' => array(
-            'option-1' => esc_html__('Option 1', 'cmb2-ext'),
-            'option-2' => esc_html__('Option 2', 'cmb2-ext'),
-            'option-3' => esc_html__('Option 3', 'cmb2-ext'),
-            'option-4' => esc_html__('Option 4', 'cmb2-ext'),
+            'option-1' => esc_html__('Option 1', 'cmb-ext'),
+            'option-2' => esc_html__('Option 2', 'cmb-ext'),
+            'option-3' => esc_html__('Option 3', 'cmb-ext'),
+            'option-4' => esc_html__('Option 4', 'cmb-ext'),
         ),
     ));
 
     //Unit
     $cmb_ext_demo->add_field(array(
-        'name' => esc_html__('Unit', 'cmb2-ext'),
-        'desc' => esc_html__('Field description (optional)', 'cmb2-ext'),
+        'name' => esc_html__('Unit', 'cmb-ext'),
+        'desc' => esc_html__('Field description (optional)', 'cmb-ext'),
         'id' => $prefix . 'unit',
         'type' => 'unit',
         'tab' => 'general',
@@ -171,8 +171,8 @@ function cmb2_ext_demo_metabox()
 
     //Ajax Search single
     $cmb_ext_demo->add_field(array(
-        'name' => esc_html__('Example Single', 'cmb2-ext'),
-        'desc' => esc_html__('(Start typing post title)', 'cmb2-ext'),
+        'name' => esc_html__('Example Single', 'cmb-ext'),
+        'desc' => esc_html__('(Start typing post title)', 'cmb-ext'),
         'id' => $prefix . 'post',
         'type' => 'ajax_search',
         'tab' => 'search',
@@ -185,8 +185,8 @@ function cmb2_ext_demo_metabox()
 
     //Ajax Search Multiple
     $cmb_ext_demo->add_field(array(
-        'name' => esc_html__('Example Multiple', 'cmb2-ext'),
-        'desc' => esc_html__('(Start typing post title)', 'cmb2-ext'),
+        'name' => esc_html__('Example Multiple', 'cmb-ext'),
+        'desc' => esc_html__('(Start typing post title)', 'cmb-ext'),
         'id' => $prefix . 'posts',
         'type' => 'ajax_search',
         'tab' => 'search',
@@ -202,8 +202,8 @@ function cmb2_ext_demo_metabox()
 
     //Ajax Search user single
     $cmb_ext_demo->add_field(array(
-        'name' => esc_html__('Example User Single', 'cmb2-ext'),
-        'desc' => esc_html__('(Start typing user)', 'cmb2-ext'),
+        'name' => esc_html__('Example User Single', 'cmb-ext'),
+        'desc' => esc_html__('(Start typing user)', 'cmb-ext'),
         'id' => $prefix . 'user',
         'type' => 'ajax_search',
         'tab' => 'search',
@@ -216,8 +216,8 @@ function cmb2_ext_demo_metabox()
 
     //Ajax Search user multiple
     $cmb_ext_demo->add_field(array(
-        'name' => esc_html__('Example user multiple', 'cmb2-ext'),
-        'desc' => esc_html__('(Start typing user)', 'cmb2-ext'),
+        'name' => esc_html__('Example user multiple', 'cmb-ext'),
+        'desc' => esc_html__('(Start typing user)', 'cmb-ext'),
         'id' => $prefix . 'users',
         'type' => 'ajax_search',
         'tab' => 'search',
@@ -231,8 +231,8 @@ function cmb2_ext_demo_metabox()
 
     //Ajax Search single term
     $cmb_ext_demo->add_field(array(
-        'name' => esc_html__('Example term', 'cmb2-ext'),
-        'desc' => esc_html__('(Start typing term)', 'cmb2-ext'),
+        'name' => esc_html__('Example term', 'cmb-ext'),
+        'desc' => esc_html__('(Start typing term)', 'cmb-ext'),
         'id' => $prefix . 'term',
         'type' => 'ajax_search',
         'tab' => 'search',
@@ -245,8 +245,8 @@ function cmb2_ext_demo_metabox()
 
     //Ajax Search Multiple terms
     $cmb_ext_demo->add_field(array(
-        'name' => esc_html__('Example Multiple term', 'cmb2-ext'),
-        'desc' => esc_html__('(Start typing term)', 'cmb2-ext'),
+        'name' => esc_html__('Example Multiple term', 'cmb-ext'),
+        'desc' => esc_html__('(Start typing term)', 'cmb-ext'),
         'id' => $prefix . 'terms',
         'type' => 'ajax_search',
         'tab' => 'search',
@@ -261,23 +261,23 @@ function cmb2_ext_demo_metabox()
 
     /*******************GROUPS**************************/
     $group_field_id = $cmb_ext_demo->add_field(array(
-        'description' => esc_html__('Generates reusable form entries', 'cmb2-ext'),
+        'description' => esc_html__('Generates reusable form entries', 'cmb-ext'),
         'id' => $prefix . '_group',
         'type' => 'group',
         'tab' => 'group',
         // 'repeatable'  => false, // use false if you want non-repeatable group
         'options' => array(
-            'group_title' => esc_html__('Entry {#}', 'cmb2-ext'), // since version 1.1.4, {#} gets replaced by row number
-            'add_button' => esc_html__('Add Another Entry', 'cmb2-ext'),
-            'remove_button' => esc_html__('Remove Entry', 'cmb2-ext'),
+            'group_title' => esc_html__('Entry {#}', 'cmb-ext'), // since version 1.1.4, {#} gets replaced by row number
+            'add_button' => esc_html__('Add Another Entry', 'cmb-ext'),
+            'remove_button' => esc_html__('Remove Entry', 'cmb-ext'),
             'sortable' => true,
         ),
     ));
 
     // Id's for group's fields only need to be unique for the group. Prefix is not needed.
     $cmb_ext_demo->add_group_field($group_field_id, array(
-        'name' => esc_html__('Title', 'cmb2-ext'),
-        'desc' => esc_html__('This is a title description', 'cmb2-ext'),
+        'name' => esc_html__('Title', 'cmb-ext'),
+        'desc' => esc_html__('This is a title description', 'cmb-ext'),
         'id' => $prefix . '_title',
         'type' => 'text',
         //'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)

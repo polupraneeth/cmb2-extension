@@ -85,7 +85,7 @@ class CMB_Extension_Type_Content_Wrap extends CMB_Extension_Type_Multi_Base
             'value' => ((isset($this->value['all'])) ? $this->value['all'] : ''),
         ));
 
-        return $this->filed_html($args, "cmb-ext-content-wrap-field-all", __('All:', 'cmb2-ext'));
+        return $this->filed_html($args, "cmb-ext-content-wrap-field-all", __('All:', 'cmb-ext'));
 
     }
 
@@ -101,7 +101,7 @@ class CMB_Extension_Type_Content_Wrap extends CMB_Extension_Type_Multi_Base
             'value' => ((isset($this->value['top'])) ? $this->value['top'] : ''),
         ));
 
-        return $this->filed_html($args, "cmb-ext-content-wrap-field-top", __('Top:', 'cmb2-ext'));
+        return $this->filed_html($args, "cmb-ext-content-wrap-field-top", __('Top:', 'cmb-ext'));
     }
 
     public function field_right()
@@ -116,7 +116,7 @@ class CMB_Extension_Type_Content_Wrap extends CMB_Extension_Type_Multi_Base
             'value' => ((isset($this->value['right'])) ? $this->value['right'] : ''),
         ));
 
-        return $this->filed_html($args, "cmb-ext-content-wrap-field-right", __('Right:', 'cmb2-ext'));
+        return $this->filed_html($args, "cmb-ext-content-wrap-field-right", __('Right:', 'cmb-ext'));
     }
 
     public function field_bottom()
@@ -131,7 +131,7 @@ class CMB_Extension_Type_Content_Wrap extends CMB_Extension_Type_Multi_Base
             'value' => ((isset($this->value['bottom'])) ? $this->value['bottom'] : ''),
         ));
 
-        return $this->filed_html($args, "cmb-ext-content-wrap-field-bottom", __('Bottom:', 'cmb2-ext'));
+        return $this->filed_html($args, "cmb-ext-content-wrap-field-bottom", __('Bottom:', 'cmb-ext'));
     }
 
     public function field_left()
@@ -146,7 +146,7 @@ class CMB_Extension_Type_Content_Wrap extends CMB_Extension_Type_Multi_Base
             'value' => ((isset($this->value['left'])) ? $this->value['left'] : ''),
         ));
 
-        return $this->filed_html($args, "cmb-ext-content-wrap-field-left", __('Left:', 'cmb2-ext'));
+        return $this->filed_html($args, "cmb-ext-content-wrap-field-left", __('Left:', 'cmb-ext'));
     }
 
     public function field_unit()
@@ -164,7 +164,7 @@ class CMB_Extension_Type_Content_Wrap extends CMB_Extension_Type_Multi_Base
         $this->field->escaped_value = $this->value;
 
         $attr = $this->concat_attrs(array('for' => $args['id']));
-        $lable = __('Unit:', 'cmb2-ext');
+        $lable = __('Unit:', 'cmb-ext');
         return sprintf('<div class="cmb-ext-content-wrap-field cmb-ext-content-wrap-field-unit"><label %s>%s</label>%s</div>', $attr, $lable, $this->types->select($args));
     }
 

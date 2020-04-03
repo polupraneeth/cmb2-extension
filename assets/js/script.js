@@ -1,11 +1,9 @@
-/* global jQuery */
-
 window.CMB2Ext = window.CMB2Ext || {};
 (function (window, document, $, cmbExt, cmb, undefined) {
     'use strict';
 
     // localization strings
-    var l10n = window.cmb2_ext_l10;
+    //var l10n = window.cmb2_ext_l10;
     var setTimeout = window.setTimeout;
     var $document;
     var $id = function (selector) {
@@ -95,7 +93,7 @@ window.CMB2Ext = window.CMB2Ext || {};
         if (wrap.hasClass('cmb-ext-content-wrap-multiple')) {
             wrap.removeClass('cmb-ext-content-wrap-multiple').addClass('cmb-ext-content-wrap-single');
 
-            $(this).find('i').attr('class', 'dashicons dashicons-editor-expand');
+            $(this).find('i').attr('class', 'dashicons dash','s-editor-expand');
         } else {
             wrap.removeClass('cmb-ext-content-wrap-single').addClass('cmb-ext-content-wrap-multiple');
 
@@ -107,7 +105,7 @@ window.CMB2Ext = window.CMB2Ext || {};
     Animate
     --------------------------------------------------------------*/
     // Animate on change
-    cmbExt.animateOnChange = function (e) {
+    cmbExt.animateOnChange = function () {
         var $this = $(this);
         var text = $this.closest('.cmb-ext-animation').find('.cmb-ext-animation-preview-text');
 
@@ -118,7 +116,7 @@ window.CMB2Ext = window.CMB2Ext || {};
     };
 
     // Animate on click
-    cmbExt.animateOnClick = function (e) {
+    cmbExt.animateOnClick = function () {
         var $this = $(this);
         var text = $this.next('.cmb-ext-animation-preview-text');
         var animation = text.attr('class').replace('cmb-ext-animation-preview-text', '');
@@ -181,7 +179,7 @@ window.CMB2Ext = window.CMB2Ext || {};
         $('.cmb-ext-iconselect').each(function () {
             $(this).fontIconPicker({
                 theme: 'fip-grey'
-            })
+            });
         });
     };
 
@@ -258,7 +256,7 @@ window.CMB2Ext = window.CMB2Ext || {};
         $('.cmb-ext-ajax-search:not([data-ajax-search="true"])').each(function () {
             $(this).attr('data-ajax-search', true);
 
-            var input_id = $(this).attr('id'); // Field id with '_input' sufix (the searchable field)
+            //var input_id = $(this).attr('id'); // Field id with '_input' sufix (the searchable field)
             var field_id = $(this).attr('id').replace(new RegExp('_input$'), ''); // Field id, the true one field
             var object_type = $(this).attr('data-object-type');
             var query_args = $(this).attr('data-query-args');
@@ -282,7 +280,7 @@ window.CMB2Ext = window.CMB2Ext || {};
                             var selected_vals = [];
                             var d = 0;
 
-                            $('#' + field_id + '_results input').each(function (index, element) {
+                            $('#' + field_id + '_results input').each(function () {
                                 selected_vals.push($(this).val());
                             });
 
@@ -311,10 +309,10 @@ window.CMB2Ext = window.CMB2Ext || {};
                         var limit = parseInt($(this).attr('data-limit'));
                         var sortable = $(this).attr('data-sortable');
 
-                        if (multiple == 1) {
+                        if (multiple === 1) {
                             // Multiple
                             $('#' + field_name + '_results').append('<li>' +
-                                ((sortable == 1) ? '<span class="hndl"></span>' : '') +
+                                ((sortable === 1) ? '<span class="hndl"></span>' : '') +
                                 '<input type="hidden" name="' + field_name + '[]" value="' + suggestion.id + '">' +
                                 '<a href="' + suggestion.link + '" target="_blank" class="edit-link">' + suggestion.value + '</a>' +
                                 '<a class="remover"><span class="dashicons dashicons-no"></span><span class="dashicons dashicons-dismiss"></span></a>' +
@@ -323,7 +321,7 @@ window.CMB2Ext = window.CMB2Ext || {};
                             $(this).val('');
 
                             // Checks if there is the max allowed results, limit < 0 means unlimited
-                            if (limit > 0 && limit == $('#' + field_name + '_results li').length) {
+                            if (limit > 0 && limit === $('#' + field_name + '_results li').length) {
                                 $(this).prop('disabled', 'disabled');
                             } else {
                                 $(this).focus();
@@ -336,7 +334,7 @@ window.CMB2Ext = window.CMB2Ext || {};
                 },
                 cmb2_ext_l10.options));
 
-            if ($(this).attr('data-sortable') == 1) {
+            if ($(this).attr('data-sortable') === 1) {
                 $('#' + field_id + '_results').sortable({
                     handle: '.hndl',
                     placeholder: 'ui-state-highlight',
@@ -344,7 +342,7 @@ window.CMB2Ext = window.CMB2Ext || {};
                 });
             }
         });
-    }
+    };
 
     // Initialize on group fields add row
     cmbExt.initAjaxSearchGroup = function (evt, $row) {

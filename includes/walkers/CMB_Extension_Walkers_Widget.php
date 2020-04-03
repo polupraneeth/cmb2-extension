@@ -72,16 +72,16 @@ class CMB_Extension_Walkers_Widget extends WP_Widget {
 
 		parent::__construct(
 			$this->widget_slug,
-			esc_html__( 'CMB2 Widget Title', 'cmb2-ext' ),
+			esc_html__( 'CMB2 Widget Title', 'cmb-ext' ),
 			array(
 				'classname' => $this->widget_slug,
 				'customize_selective_refresh' => true,
-				'description' => esc_html__( 'A CMB2 widget description.', 'cmb2-ext' ),
+				'description' => esc_html__( 'A CMB2 widget description.', 'cmb-ext' ),
 			)
 		);
 
 		self::$defaults = array(
-			'title' => esc_html__( 'CMB2 Widget Title', 'cmb2-ext' ),
+			'title' => esc_html__( 'CMB2 Widget Title', 'cmb-ext' ),
 			'image' => '',
 			'desc'  => '',
 			'color' => '#bada55',
