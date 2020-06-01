@@ -30,6 +30,7 @@ class CMB_Extension_Types
         'button_set',
         'order',
         'unit',
+        'font'
     );
 
     /**
@@ -67,6 +68,11 @@ class CMB_Extension_Types
     public function unit($args)
     {
         return $args[4]->get_new_render_type(__FUNCTION__, 'CMB_Extension_Type_Unit', $args)->render();
+    }
+
+    public function font($args)
+    {
+        return $args[4]->get_new_render_type(__FUNCTION__, 'CMB_Extension_Type_Font', $args)->render();
     }
 
     /**

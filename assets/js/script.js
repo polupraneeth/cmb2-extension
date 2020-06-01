@@ -27,7 +27,9 @@ window.CMB2Ext = window.CMB2Ext || {};
         // Initialize ajax search
         cmbExt.initAjaxSearch();
         // Initialize font picker
-        cmbExt.initFontIcon();
+        cmbExt.initFont();
+        // Initialize Icon picker
+        cmbExt.initIcon();
 
         // Tabs Initialize
         $('.cmb-ext-tab-nav').on('click', '.cmb-ext-tab-nav-menu', cmbExt.toggleTabNav);
@@ -173,9 +175,29 @@ window.CMB2Ext = window.CMB2Ext || {};
     };
 
     /*--------------------------------------------------------------
+    Font
+    --------------------------------------------------------------*/
+    cmbExt.initFont = function () {
+        
+        $( '.cmb-type-font select' ).each(function() {
+            $(this).higooglefonts({
+                theme: 'default cmb-ext-font-select2',
+                selectedCallback:function(e){
+                    //console.log(e);
+                },
+                loadedCallback:function(font){
+                    //console.log(font);
+                    $(".font-preview").css("font-family", font);
+                }
+            });
+        });
+
+    };
+
+    /*--------------------------------------------------------------
     Icon
     --------------------------------------------------------------*/
-    cmbExt.initFontIcon = function () {
+    cmbExt.initIcon = function () {
         $('.cmb-ext-iconselect').each(function () {
             $(this).fontIconPicker({
                 theme: 'fip-grey'
