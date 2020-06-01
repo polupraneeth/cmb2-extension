@@ -1,0 +1,278 @@
+# Copyright (C) 2020 Praneeth Polu <contact@polupraneeth.me>
+# This file is distributed under the GPL v3.
+msgid ""
+msgstr ""
+"Project-Id-Version: CMB2 Extension 1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/cmb2\n"
+"POT-Creation-Date: 2020-04-03 00:11:46+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2020-4-3 0:11+-330\n"
+"Last-Translator: CMB2 EXT\n"
+"Language-Team: CMB2 EXT\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
+
+#: example-functions.php:24
+msgid "Test Metabox"
+msgstr ""
+
+#: example-functions.php:30
+msgid "General"
+msgstr ""
+
+#: example-functions.php:34
+msgid "Search"
+msgstr ""
+
+#: example-functions.php:38
+msgid "Group"
+msgstr ""
+
+#: example-functions.php:46
+msgid "Content Wrap"
+msgstr ""
+
+#: example-functions.php:47 example-functions.php:61 example-functions.php:105
+#: example-functions.php:129 example-functions.php:161
+msgid "Field description (optional)"
+msgstr ""
+
+#: example-functions.php:60
+msgid "Switch Button"
+msgstr ""
+
+#: example-functions.php:71
+msgid "Image Select"
+msgstr ""
+
+#: example-functions.php:72
+msgid "page layout using image select"
+msgstr ""
+
+#: example-functions.php:86
+msgid "Icon Select"
+msgstr ""
+
+#: example-functions.php:87
+msgid "Select Font Awesome icon"
+msgstr ""
+
+#: example-functions.php:104
+msgid "Test Animation"
+msgstr ""
+
+#: example-functions.php:113
+msgid "Custom Group"
+msgstr ""
+
+#: example-functions.php:118
+msgid "Custom Entrance"
+msgstr ""
+
+#: example-functions.php:121
+msgid "Custom Animation on a custom group"
+msgstr ""
+
+#: example-functions.php:128
+msgid "ButtonSet"
+msgstr ""
+
+#: example-functions.php:135
+msgid "Default"
+msgstr ""
+
+#: example-functions.php:136
+msgid "Left"
+msgstr ""
+
+#: example-functions.php:137
+msgid "Center"
+msgstr ""
+
+#: example-functions.php:138
+msgid "Right"
+msgstr ""
+
+#: example-functions.php:144
+msgid "Order"
+msgstr ""
+
+#: example-functions.php:145
+msgid "field description (optional)"
+msgstr ""
+
+#: example-functions.php:151
+msgid "Option 1"
+msgstr ""
+
+#: example-functions.php:152
+msgid "Option 2"
+msgstr ""
+
+#: example-functions.php:153
+msgid "Option 3"
+msgstr ""
+
+#: example-functions.php:154
+msgid "Option 4"
+msgstr ""
+
+#: example-functions.php:160
+msgid "Unit"
+msgstr ""
+
+#: example-functions.php:174
+msgid "Example Single"
+msgstr ""
+
+#: example-functions.php:175 example-functions.php:189
+msgid "(Start typing post title)"
+msgstr ""
+
+#: example-functions.php:188
+msgid "Example Multiple"
+msgstr ""
+
+#: example-functions.php:205
+msgid "Example User Single"
+msgstr ""
+
+#: example-functions.php:206 example-functions.php:220
+msgid "(Start typing user)"
+msgstr ""
+
+#: example-functions.php:219
+msgid "Example user multiple"
+msgstr ""
+
+#: example-functions.php:234
+msgid "Example term"
+msgstr ""
+
+#: example-functions.php:235 example-functions.php:249
+msgid "(Start typing term)"
+msgstr ""
+
+#: example-functions.php:248
+msgid "Example Multiple term"
+msgstr ""
+
+#: example-functions.php:264
+msgid "Generates reusable form entries"
+msgstr ""
+
+#: example-functions.php:270
+msgid "Entry {#}"
+msgstr ""
+
+#: example-functions.php:271
+msgid "Add Another Entry"
+msgstr ""
+
+#: example-functions.php:272
+msgid "Remove Entry"
+msgstr ""
+
+#: example-functions.php:279
+msgid "Title"
+msgstr ""
+
+#: example-functions.php:280
+msgid "This is a title description"
+msgstr ""
+
+#: includes/CMB_Extension_Ajax.php:64
+msgid "Error : Unauthorized action"
+msgstr ""
+
+#: includes/CMB_Extension_Ajax.php:70
+msgid "Error : Wrong request parameters"
+msgstr ""
+
+#: includes/types/CMB_Extension_Type_Animation.php:353
+msgid "Select an animation"
+msgstr ""
+
+#: includes/types/CMB_Extension_Type_Animation.php:384
+msgid "Preview"
+msgstr ""
+
+#: includes/types/CMB_Extension_Type_Content_Wrap.php:88
+msgid "All:"
+msgstr ""
+
+#: includes/types/CMB_Extension_Type_Content_Wrap.php:104
+msgid "Top:"
+msgstr ""
+
+#: includes/types/CMB_Extension_Type_Content_Wrap.php:119
+msgid "Right:"
+msgstr ""
+
+#: includes/types/CMB_Extension_Type_Content_Wrap.php:134
+msgid "Bottom:"
+msgstr ""
+
+#: includes/types/CMB_Extension_Type_Content_Wrap.php:149
+msgid "Left:"
+msgstr ""
+
+#: includes/types/CMB_Extension_Type_Content_Wrap.php:167
+msgid "Unit:"
+msgstr ""
+
+#: includes/walkers/CMB_Extension_Walkers_Widget.php:75
+#: includes/walkers/CMB_Extension_Walkers_Widget.php:84
+msgid "CMB2 Widget Title"
+msgstr ""
+
+#: includes/walkers/CMB_Extension_Walkers_Widget.php:79
+msgid "A CMB2 widget description."
+msgstr ""
+
+#: init.php:259
+msgid ""
+" Activation failed: The CMB2 Extension plugin requires PHP 5.3+. Please "
+"contact your webhost and ask them to upgrade the PHP version for your "
+"webhosting account. "
+msgstr ""
+
+#: init.php:284
+msgid ""
+" CMB2 Extensions is a dependent plugin of CMB2, in order to work please "
+"install and activate CMB2 Plugin"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "CMB2 Extension"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/polupraneeth/cmb2-extensions"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"CMB2 Extension is to extend cmb2 plugin functionality and organize it's "
+"Add-ons at one place."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Praneeth Polu <contact@polupraneeth.me>"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://polupraneeth.me"
+msgstr ""
