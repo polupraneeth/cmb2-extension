@@ -22,17 +22,14 @@
 					loadedCallback: function(params) { }  
 				}, options );
 			
-				
 				var data = data || [];
 				
 				fonts.forEach(function(font,index){
-
 					data.push({
 						id           :   font,
 						text         :   font,
 						itemId     :   index
 					});
-					
 				});
 			
 				var y=0;
@@ -59,34 +56,25 @@
 				});
 				this.on("select2:select", function (e) {					
 					var font_family		=	e.params.data.text;	
-					
 					if (typeof settings.selectedCallback == 'function') { // make sure the callback is a function
-						
 						settings.selectedCallback.call(this, e.params.data.text); // brings the scope to the callback
 					}
 					
-					
-					
-									
 					WebFont.load({
 						google: {
 							families: [font_family]
 						},
 						fontactive: function(familyName, fvd) {
-							
 							if (typeof settings.loadedCallback == 'function') { // make sure the callback is a function
-						
 								settings.loadedCallback.call(this, familyName); // brings the scope to the callback
 							}
-							
-							
 						}
 					});
 					
 				});
 
 				// Set empty initial value
-				this.val('');
+				this.val(this.data( "selected" ));
 				this.trigger('change');
 
 		  }; /// End of function

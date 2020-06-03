@@ -14,7 +14,7 @@
 // This plugin is based on CMB2 Field Type: CMB2 Font (https://github.com/rubengc/cmb2-field-font)
 // Special thanks to Rubengc for his awesome work
 
-class CMB_Extension_Type_Font extends CMB2_Type_Text
+class CMB_Extension_Type_Font extends CMB2_Type_Multi_Base
 {
 
     /**
@@ -42,26 +42,24 @@ class CMB_Extension_Type_Font extends CMB2_Type_Text
      * Render field
      */
     public function render($args = array())
-    {
-        // Parse args
-        $attrs = $this->parse_args('select', array(
-            'class' => 'cmb2_select',
+    {   
+
+        $this->field->add_js_dependencies('higooglefonts');
+        
+        $select = $this->types->select(array(
+            'class' => 'cmb-select-font',
             'name' => $this->_name(),
             'id' => $this->_id(),
             'data-selected' => $this->value,
-            'data-placeholder' => ($this->field->args('placeholder') ? $this->field->args('placeholder') : '')
+            'data-placeholder' => ($this->field->args('placeholder') ? $this->field->args('placeholder') : ''),
+            'desc' => '',
         ));
 
-        $this->field->add_js_dependencies('higooglefonts');
-        $preview = $this->field->args('preview') ? '<p class="font-preview">Preview</p>' : '';
+        $preview = $this->field->args('preview') ? '<span class="font-preview">' . __('Preview', 'cmb-ext') . '</span>' : '';
 
-        echo $this->rendered(
-            sprintf('<div class="cmb-ext-font"><select%s></select>%s %s</div>',
-                $this->field->concat_attrs($attrs),
-                $preview,
-                $this->_desc(true))
+        return $this->rendered(
+            sprintf("<div class='cmb-ext-font'>%s %s %s</div>", $select, $preview, $this->_desc(true))
         );
-
     }
 
 }

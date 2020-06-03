@@ -176,6 +176,7 @@ function cmb2_ext_demo_metabox()
         'id' => $prefix . 'font',
         'type' => 'font',
         'tab' => 'general',
+        'preview' => true,
         'attributes' => array(
             'data-placeholder' => esc_html__('Choose a font', 'cmb2-ext'),
         )

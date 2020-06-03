@@ -74,7 +74,7 @@ class CMB_Extension_Types
     {
         return $args[4]->get_new_render_type(__FUNCTION__, 'CMB_Extension_Type_Font', $args)->render();
     }
-
+    
     /**
      * Initialize the plugin by hooking into CMB2
      * @param CMB2 $cmb
