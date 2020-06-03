@@ -28,6 +28,8 @@ window.CMB2Ext = window.CMB2Ext || {};
         cmbExt.initAjaxSearch();
         // Initialize font picker
         cmbExt.initFont();
+        // Initialize slider
+        cmbExt.initSlider();
         // Initialize Icon picker
         cmbExt.initIcon();
 
@@ -50,7 +52,8 @@ window.CMB2Ext = window.CMB2Ext || {};
             .on('click', '.cmb-add-row-button', cmbExt.RepeatableFontIconDestroy);
 
         $('.cmb-repeat-table')
-            .on('click', 'cmb2_add_row', cmbExt.RepeatableFontIconRefresh);
+            .on('click', 'cmb2_add_row', cmbExt.RepeatableFontIconRefresh)
+            .on('click', 'cmb2_add_row', cmbExt.RepeatableSliderRefresh);
 
         if ( $repeatGroup.length ) {
             $repeatGroup
@@ -58,6 +61,7 @@ window.CMB2Ext = window.CMB2Ext || {};
                 .on('cmb2_add_group_row_start', cmbExt.FontIconAddGroupDestroy)
                 .on('cmb2_shift_rows_start', cmbExt.FontIconAddGroupShiftedDestroy)
                 .on('cmb2_shift_rows_complete', cmbExt.FontIconAddGroupShiftedRefresh)
+                .on('cmb2_shift_rows_complete', cmbExt.SliderAddGroupShiftedRefresh)
                 .on( 'cmb2_add_row', cmbExt.FontIconAddGroupRefresh );
 
         }
@@ -182,16 +186,73 @@ window.CMB2Ext = window.CMB2Ext || {};
         $( '.cmb-type-font select' ).each(function() {
             $(this).higooglefonts({
                 theme: 'default cmb-ext-font-select2',
-                selectedCallback:function(e){
-                    //console.log(e);
-                },
                 loadedCallback:function(font){
-                    //console.log(font);
                     $(".font-preview").css("font-family", font);
                 }
             });
         });
 
+    };
+
+    /*--------------------------------------------------------------
+    Slider
+    --------------------------------------------------------------*/
+    cmbExt.initSlider = function () {
+
+        $( '.cmb-type-slider ' ).each(function() {
+            cmbExt.slide( $(this) );
+        });
+    };
+
+    // initialize slider row
+    cmbExt.slide = function ( row ){
+
+        // Loop through all cmb-type-slider-field instances and instantiate the slider UI
+        row.each( function() {
+            var $this       = $( this );
+            var $value      = $this.find( '.cmb-slider-field-value' );
+            var $slider     = $this.find( '.cmb-slider-field' );
+            var $text       = $this.find( '.cmb-slider-field-value-text' );
+            var slider_data = $value.data();
+
+            $slider.slider({
+                range : 'min',
+                value : slider_data.start,
+                min   : slider_data.min,
+                max   : slider_data.max,
+                step  : slider_data.step,
+                slide : function( event, ui ) {
+                    $value.val( ui.value );
+                    $text.text( ui.value );
+                }
+            });
+
+            // Initiate the display
+            $value.val( $slider.slider( 'value' ) );
+            $text.text( $slider.slider( 'value' ) );
+        });
+    };
+
+    // When a group row is shifted, reinitialise slider value
+    cmbExt.SliderAddGroupShiftedRefresh = function (event, instance) {
+        var groupWrap = $(instance).closest('.cmb-repeatable-group');
+        groupWrap.find('.cmb-type-slider').each(function () {
+            $( this ).find( '.cmb-slider-field' ).slider( 'value', $(this).find( '.cmb-slider-field-value' ).val() );
+            $( this ).find( '.cmb-slider-field-value-text' ).text( $(this).find( '.cmb-slider-field-value' ).val() );
+        });
+    };
+
+    // When a group row is added, reset slider
+    cmbExt.RepeatableSliderRefresh = function (event, newRow) {
+        // Reinitialise the field we previously destroyed
+        $(newRow).prev().find('.cmb-type-slider').each(function () {
+
+            cmbExt.initSlider($(this));
+
+            $( this ).find( '.ui-slider-range' ).css( 'width', 0 );
+            $( this ).find( '.cmb-slider-field' ).slider( 'value', 0 );
+            $( this ).find( '.cmb-slider-field-value-text' ).text( '0' );
+        });
     };
 
     /*--------------------------------------------------------------

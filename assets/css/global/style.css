@@ -203,6 +203,16 @@ input.cmb-ext-ajax-search {
 .cmb-ext-font .font-preview{
     margin-left: 10px;
 }
+/* ==========================================================================
+   Slider Selector
+   ========================================================================== */
+.cmb-slider-field-value-display {
+    float:right;
+    font-weight: 400;
+    font-size: 12px;
+    color: #888;
+    padding-top: .5em;
+}
 
 /* ==========================================================================
    unit Selector

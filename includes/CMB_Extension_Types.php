@@ -28,6 +28,7 @@ class CMB_Extension_Types
         'ajax_search',
         'animation',
         'button_set',
+        'slider',
         'order',
         'unit',
         'font'
@@ -43,6 +44,7 @@ class CMB_Extension_Types
         'icon_select' => array('jqueryfontselectormain', 'jqueryfontselector'),
         'animation' => array('animate'),
         'font' => array('select2'),
+        'slider' => array('jquery-ui'),
     );
 
     public function ajax_search($args)
@@ -58,6 +60,11 @@ class CMB_Extension_Types
     public function button_set($args)
     {
         return $args[4]->get_new_render_type(__FUNCTION__, 'CMB_Extension_Type_Buttonset', $args)->render();
+    }
+
+    public function slider($args)
+    {
+        return $args[4]->get_new_render_type(__FUNCTION__, 'CMB_Extension_Type_Slider', $args)->render();
     }
 
     public function order($args)

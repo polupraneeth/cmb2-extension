@@ -182,6 +182,20 @@ function cmb2_ext_demo_metabox()
         )
     ));
 
+    //Slide
+    $cmb_ext_demo->add_field(array(
+        'name' => esc_html__('Slide', 'cmb2-ext'),
+        'desc' => esc_html__('Field description (optional)', 'cmb2-ext'),
+        'id' => $prefix . 'slide',
+        'tab' => 'general',
+        'type'        => 'slider',
+		'min'         => '0',
+		'max'         => '200',
+		'step'        => '5',
+		'default'     => '0', // start value
+		'value_label' => 'Value:',
+    ));
+
     //Ajax Search single
     $cmb_ext_demo->add_field(array(
         'name' => esc_html__('Example Single', 'cmb-ext'),

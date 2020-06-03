@@ -168,7 +168,7 @@ class CMB_Extension_Hookup extends CMB2_Hookup_Base
         wp_register_style('fontawesome', $asset_path . 'assets/css/vendor/font-awesome.min.css', array('jqueryfontselector'), CMB2_EXTENSION_VERSION);
 
         //Jquery Ui
-        wp_register_style( 'slider-ui', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.min.css', array(), '1.0' );
+        wp_register_style( 'jquery-ui', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.min.css', array(), '1.0' );
 
     }
 
