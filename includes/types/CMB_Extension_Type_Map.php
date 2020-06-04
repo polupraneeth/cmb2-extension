@@ -2,7 +2,7 @@
 /**
  * Class CMB_Extension_Type_Map
  *
- * @since  1.0.0
+ * @since  1.0.3
  *
  * @category  WordPress_Plugin
  * @package   CMB2 Extension
@@ -29,7 +29,7 @@ class CMB_Extension_Type_Map extends CMB2_Type_Text
      *
      * @param CMB2_Types $types
      * @param array $args
-     * @since 1.0.1
+     * @since 1.0.3
      *
      */
     public function __construct(CMB2_Types $types, $args = array())

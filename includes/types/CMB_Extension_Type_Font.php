@@ -2,7 +2,7 @@
 /**
  * Class CMB_Extension_Type_Font
  *
- * @since  1.0.0
+ * @since  1.0.1
  *
  * @category  WordPress_Plugin
  * @package   CMB2 Extension
@@ -29,7 +29,7 @@ class CMB_Extension_Type_Font extends CMB2_Type_Multi_Base
      *
      * @param CMB2_Types $types
      * @param array $args
-     * @since 1.0.0
+     * @since 1.0.1
      *
      */
     public function __construct(CMB2_Types $types, $args = array())

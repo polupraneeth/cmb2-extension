@@ -5,7 +5,7 @@
  * @package     WordPress\Plugins\CMB2 Extension
  * @author      Praneeth Polu <contact@polupraneeth.me>
  * @link        https://polupraneeth.me
- * @version     1.0.0
+ * @version     1.0.3
  *
  * @copyright   2019 StackAdroit
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 3 or higher
@@ -18,7 +18,7 @@
  * Author URI:        https://polupraneeth.me
  * Github Plugin URI: https://github.com/polupraneeth/cmb2-extensions
  * Github Branch:     master
- * Version:           1.0.0
+ * Version:           1.0.3
  * License:           GPL v3
  *
  * Copyright (C) 2019, StackAdroit - contact@polupraneeth.me
@@ -51,7 +51,7 @@ if (!class_exists('CMB2_Extension_Bootstrap', false)) {
          * @const string
          * @since 1.0.0
          */
-        const VERSION = '1.0.0';
+        const VERSION = '1.0.3';
 
         /**
          * Current version hook priority.
@@ -60,7 +60,7 @@ if (!class_exists('CMB2_Extension_Bootstrap', false)) {
          * @var   int
          * @since 1.0.0
          */
-        const PRIORITY = 9999;
+        const PRIORITY = 9998;
 
         /**
          * Single instance of the CMB2_Extension_Bootstrap object
