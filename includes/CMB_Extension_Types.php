@@ -31,7 +31,8 @@ class CMB_Extension_Types
         'slider',
         'order',
         'unit',
-        'font'
+        'font',
+        'map'
     );
 
     /**
@@ -81,7 +82,12 @@ class CMB_Extension_Types
     {
         return $args[4]->get_new_render_type(__FUNCTION__, 'CMB_Extension_Type_Font', $args)->render();
     }
-    
+
+    public function map($args)
+    {
+        return $args[4]->get_new_render_type(__FUNCTION__, 'CMB_Extension_Type_Map', $args)->render();
+    }
+
     /**
      * Initialize the plugin by hooking into CMB2
      * @param CMB2 $cmb

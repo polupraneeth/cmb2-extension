@@ -50,6 +50,11 @@ class CMB_Extension_JS extends CMB2_JS
             self::ajax_search();
         }
 
+        //map selector
+        if (isset($dependencies['google-maps-api'])) {
+            self::google_map();
+        }
+
         // font.
         if (isset($dependencies['higooglefonts'])) {
             self::web_font_loader();
@@ -99,6 +104,21 @@ class CMB_Extension_JS extends CMB2_JS
     {
         $func = $enqueue ? 'wp_enqueue_script' : 'wp_register_script';
         $func('jqueryiconselector', 'https://unpkg.com/@fonticonpicker/fonticonpicker/dist/js/jquery.fonticonpicker.min.js', array('jquery'), CMB2_EXTENSION_VERSION, true);
+    }
+
+    /**
+     * https://github.com/googlemaps/
+     * @param boolean $enqueue Whether or not to enqueue.
+     *
+     * @return void
+     * @since  1.0.0
+     *
+     */
+    public static function google_map($enqueue = false)
+    {
+        $google_api_key = defined( 'CMB_GOOGLE_API_KEY' ) ? CMB_GOOGLE_API_KEY : '';
+        $func = $enqueue ? 'wp_enqueue_script' : 'wp_register_script';
+        $func('google-maps-api', "https://maps.googleapis.com/maps/api/js?key={$google_api_key}&libraries=places", array('jquery'), CMB2_EXTENSION_VERSION, true);
     }
 
     /**

@@ -196,6 +196,17 @@ function cmb2_ext_demo_metabox()
 		'value_label' => 'Value:',
     ));
 
+    //Map
+    $cmb_ext_demo->add_field( array(
+		'name' => esc_html__('Location', 'cmb2-ext'),
+		'desc' => esc_html__('Drag the marker to set the exact location', 'cmb2-ext'),
+		'id' => $prefix . 'location',
+		'tab' => 'general',
+		'type' => 'map',
+		//'api_key' => 'KEY', 
+		// 'split_values' => true, // Save latitude and longitude as two separate fields
+	) );
+
     //Ajax Search single
     $cmb_ext_demo->add_field(array(
         'name' => esc_html__('Example Single', 'cmb-ext'),

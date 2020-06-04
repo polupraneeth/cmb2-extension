@@ -182,6 +182,7 @@ module.exports = function(grunt) {
 				boss    : true,
 				eqnull  : true,
 				globals : {
+					"google":false,
 					exports : true,
 					module  : false
 				},
