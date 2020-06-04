@@ -203,7 +203,6 @@ function cmb2_ext_demo_metabox()
 		'id' => $prefix . 'location',
 		'tab' => 'general',
 		'type' => 'map',
-		//'api_key' => 'KEY', 
 		// 'split_values' => true, // Save latitude and longitude as two separate fields
 	) );
 

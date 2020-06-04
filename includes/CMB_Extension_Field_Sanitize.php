@@ -45,8 +45,8 @@ class CMB_Extension_Field_Sanitize
             case 'visual_style_editor':
                 $sanitized_value = $this->order($override_value, $value, $object_id, $field_args, $sanitizer);
                 break;
-            case 'location':
-                $sanitized_value = $this->location($override_value, $value, $object_id, $field_args, $sanitizer);
+            case 'map':
+                $sanitized_value = $this->map($override_value, $value, $object_id, $field_args, $sanitizer);
                 break;
             default:
                 // We'll fallback to 'value'
@@ -81,7 +81,7 @@ class CMB_Extension_Field_Sanitize
         return $value;
     }
 
-    protected function location($override_value, $value, $object_id, $field_args, $sanitizer)
+    protected function map($override_value, $value, $object_id, $field_args, $sanitizer)
     {
         if (isset($field_args['split_values']) && $field_args['split_values']) {
             if (!empty($value['latitude'])) {
