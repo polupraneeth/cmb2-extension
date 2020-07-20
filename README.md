@@ -1,6 +1,7 @@
 # CMB2 Extension
 
 ![CMB2 Extension](https://raw.githubusercontent.com/wiki/polupraneeth/cmb2-extension/images/cmb2-extension-banner.gif)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpolupraneeth%2Fcmb2-extension.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpolupraneeth%2Fcmb2-extension?ref=badge_shield)
 
 **Contributors:**      [polupraneeth](https://github.com/polupraneeth), [stackadroit](https://github.com/stackadroit)  
 **Homepage:**          [github](https://github.com/polupraneeth/cmb2-extension)  
@@ -88,3 +89,7 @@ Thanks goes out to all these wonderful people:
 
 * Not all fields work well in a repeatable group.
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpolupraneeth%2Fcmb2-extension.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpolupraneeth%2Fcmb2-extension?ref=badge_large)
